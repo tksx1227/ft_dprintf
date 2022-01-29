@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/29 10:32:30 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/29 23:16:26 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
 
 int	ft_printf(const char *format, ...);
 

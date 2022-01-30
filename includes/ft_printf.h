@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/30 17:35:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/01/30 17:47:10 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 # include "../libft/includes/libft.h"
 
+int		ft_putchar(char c);
 int		ft_printf(const char *format, ...);
 char	*ft_itoa_base(long long n, int base, bool islower);
 

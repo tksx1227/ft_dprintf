@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/30 17:50:56 by ttomori          ###   ########.fr       */
+/*   Created: 2022/01/30 17:48:14 by ttomori           #+#    #+#             */
+/*   Updated: 2022/01/30 17:50:35 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdbool.h>
-# include "../libft/includes/libft.h"
+int	ft_putstr(char *s)
+{
+	size_t	len;
 
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
-int		ft_printf(const char *format, ...);
-char	*ft_itoa_base(long long n, int base, bool islower);
-
-#endif
+	len = ft_strlen(s);
+	if ((size_t)INT_MAX < len)
+		return (-1);
+	write(1, s, len);
+	return (len);
+}

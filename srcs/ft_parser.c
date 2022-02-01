@@ -6,11 +6,23 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/01 00:32:27 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 00:35:59 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+bool ft_parser(char **fmt, va_list *ap, t_print *info)
+{
+	bool is_success;
+
+	ft_parse_flag(fmt, info);
+	ft_parse_width(fmt, ap, info);
+	is_success = ft_parse_spec(fmt, info);
+	if (is_success)
+		is_success = ft_parse_arg(ap, info);
+	return (is_success);
+}
 
 void	ft_parse_flag(char **fmt, t_print *info)
 {

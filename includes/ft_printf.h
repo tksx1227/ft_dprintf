@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/01 23:25:05 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 00:54:08 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,16 @@ int		ft_putchar(char c);
 int		ft_putstr(char *s);
 int		ft_printf(const char *format, ...);
 char	*ft_itoa_base(long long n, int base, bool islower);
+
+// Parsers
+bool	ft_parse_char(va_list *ap, t_print *info);
+bool	ft_parse_per(t_print *info);
+bool	ft_parse_hex_lower(va_list *ap, t_print *info);
+bool	ft_parse_hex_upper(va_list *ap, t_print *info);
+bool	ft_parse_str(va_list *ap, t_print *info);
+bool	ft_parse_ptr(va_list *ap, t_print *info);
+bool	ft_parse_digit(va_list *ap, t_print *info);
+bool	ft_parse_int(va_list *ap, t_print *info);
+bool	ft_parse_uint(va_list *ap, t_print *info);
 
 #endif

@@ -78,3 +78,32 @@ bool	ft_parse_spec(char **fmt, t_print *info)
 	}
 	return (false);
 }
+
+bool	ft_parse_arg(va_list *ap, t_print *info)
+{
+	char	spec;
+	bool	is_success;
+
+	spec = info->spec;
+	if (spec == 'c')
+		is_success = ft_parse_char(ap, info);
+	else if (spec == 's')
+		is_success = ft_parse_str(ap, info);
+	else if (spec == 'p')
+		is_success = ft_parse_ptr(ap, info);
+	else if (spec == 'd')
+		is_success = ft_parse_digit(ap, info);
+	else if (spec == 'i')
+		is_success = ft_parse_int(ap, info);
+	else if (spec == 'u')
+		is_success = ft_parse_uint(ap, info);
+	else if (spec == 'x')
+		is_success = ft_parse_hex_lower(ap, info);
+	else if (spec == 'X')
+		is_success = ft_parse_hex_upper(ap, info);
+	else if (spec == '%')
+		is_success = ft_parse_per(info);
+	else
+		is_success = false;
+	return (is_success);
+}

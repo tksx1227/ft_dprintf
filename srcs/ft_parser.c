@@ -34,3 +34,32 @@ void	ft_parse_flag(char **fmt, t_print *info)
 	*fmt += 1;
 	ft_parse_flag(fmt, info);
 }
+
+void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
+{
+	size_t	width;
+
+	width = 0;
+	if (**fmt == '*')
+	{
+		width = (int)va_arg(*ap, int);
+		if (width < 0)
+		{
+			width *= -1;
+			info->minus_flag = true;
+		}
+		*fmt += 1;
+	}
+	else
+	{
+		while (ft_isdigit(**fmt))
+		{
+			width = width * 10 + (**fmt - '0');
+			*fmt += 1;
+		}
+	}
+	if ((size_t)INT_MAX < width)
+		info->width = -1;
+	else
+		info->width = width;
+}

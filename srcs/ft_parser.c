@@ -63,3 +63,18 @@ void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 	else
 		info->width = width;
 }
+
+bool	ft_parse_spec(char **fmt, t_print *info)
+{
+	char	spec;
+
+	spec = **fmt;
+	if (spec == 'c' || spec == 's' || spec == 'p' || spec == 'd' || spec == 'i' \
+			|| spec == 'u' || spec == 'x' || spec == 'X' || spec == '%')
+	{
+		info->spec = spec;
+		*fmt += 1;
+		return (true);
+	}
+	return (false);
+}

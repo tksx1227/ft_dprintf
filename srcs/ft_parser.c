@@ -6,15 +6,15 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 00:35:59 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 01:11:11 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-bool ft_parser(char **fmt, va_list *ap, t_print *info)
+bool	ft_parser(char **fmt, va_list *ap, t_print *info)
 {
-	bool is_success;
+	bool	is_success;
 
 	ft_parse_flag(fmt, info);
 	ft_parse_width(fmt, ap, info);

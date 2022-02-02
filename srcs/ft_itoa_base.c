@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/01/30 17:32:30 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 14:23:41 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_itoa_base(long long n, int base, bool islower)
 	char	*p;
 	char	*head;
 
+	if (base != 10)
+		n = (unsigned int)n;
 	dc = count_digit_base(n, base);
 	p = (char *)malloc(sizeof(char) * (dc + 1));
 	if (p == NULL)
@@ -28,7 +30,10 @@ char	*ft_itoa_base(long long n, int base, bool islower)
 	head = p;
 	p[dc] = '\0';
 	if (n < 0)
+	{
 		n *= -1;
+		*p++ = '-';
+	}
 	else if (n == 0)
 		*p++ = '0';
 	convert_base(head + dc - 1, n, base, islower);
@@ -63,6 +68,8 @@ static int	count_digit_base(long long n, int base)
 
 	counter = 0;
 	if (n == 0)
+		counter++;
+	else if (n < 0)
 		counter++;
 	while (n != 0)
 	{

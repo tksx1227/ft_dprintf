@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 19:00:38 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:52:28 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ bool	ft_attach_prec_num(t_print *info);
 int		get_digit_part(char **fmt);
 char	*add_prefix_with_free(char *s, char *prefix);
 char	*add_suffix_with_free(char *s, char *suffix);
+void	clear_info(t_print *info, void (*del)(void *));
 
 #endif

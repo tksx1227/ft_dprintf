@@ -6,11 +6,28 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 12:56:06 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:40:23 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void	clear_info(t_print *info, void (*del)(void *))
+{
+	info->width = 0;
+	info->prec = -1;
+	info->spec = 0;
+	info->is_zero = false;
+	info->is_number = false;
+	info->sharp_flag = false;
+	info->space_flag = false;
+	info->plus_flag = false;
+	info->minus_flag = false;
+	info->zero_flag = false;
+	if (del != NULL)
+		del(info->content);
+	info->content = NULL;
+}
 
 int	get_digit_part(char **fmt)
 {

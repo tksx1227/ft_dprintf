@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 17:18:02 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:36:36 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_print
 	int		precision;
 	char	spec;
 	char	*content;
+	bool	is_zero;
 	bool	sharp_flag;
 	bool	space_flag;
 	bool	plus_flag;

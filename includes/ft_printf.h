@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 12:56:49 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 13:20:37 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ bool	ft_parse_ptr(va_list *ap, t_print *info);
 bool	ft_parse_digit(va_list *ap, t_print *info);
 bool	ft_parse_int(va_list *ap, t_print *info);
 bool	ft_parse_uint(va_list *ap, t_print *info);
+
+// Attacher
+bool	ft_attacher(t_print *info);
 
 // Utils
 int		get_digit_part(char **fmt);

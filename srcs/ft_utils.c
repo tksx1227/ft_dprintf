@@ -12,6 +12,15 @@
 
 #include "../includes/ft_printf.h"
 
+int	add_write_count(int current, int new)
+{
+	if (current < 0 || new < 0)
+		return (-1);
+	else if (INT_MAX - current < new)
+		return (-1);
+	return (current + new);
+}
+
 void	clear_info(t_print *info, void (*del)(void *))
 {
 	info->width = 0;

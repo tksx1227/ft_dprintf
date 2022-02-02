@@ -71,6 +71,7 @@ bool	ft_attach_prec_num(t_print *info);
 
 // Utils
 int		get_digit_part(char **fmt);
+int		add_write_count(int current, int new);
 char	*add_prefix_with_free(char *s, char *prefix);
 char	*add_suffix_with_free(char *s, char *suffix);
 void	clear_info(t_print *info, void (*del)(void *));

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 17:36:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:00:38 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_print
 {
 	int		wc;
 	int		width;
-	int		precision;
+	int		prec;
 	char	spec;
 	char	*content;
 	bool	is_zero;
@@ -61,6 +61,13 @@ bool	ft_attacher(t_print *info);
 bool	ft_attach_sharp_flag(t_print *info);
 bool	ft_attach_plus_flag(t_print *info);
 bool	ft_attach_space_flag(t_print *info);
+
+// Attacher of precision
+bool	ft_attach_prec(t_print *info);
+bool	ft_attach_prec_ptr(t_print *info);
+bool	ft_attach_prec_str(t_print *info);
+bool	ft_attach_prec_hex(t_print *info);
+bool	ft_attach_prec_num(t_print *info);
 
 // Utils
 int		get_digit_part(char **fmt);

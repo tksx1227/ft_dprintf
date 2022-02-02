@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 12:25:06 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 12:56:49 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	ft_parse_uint(va_list *ap, t_print *info);
 
 // Utils
 int		get_digit_part(char **fmt);
-char	*add_prefix_with_free(char *s, const char *prefix);
-char	*add_suffix_with_free(char *s, const char *suffix);
+char	*add_prefix_with_free(char *s, char *prefix);
+char	*add_suffix_with_free(char *s, char *suffix);
 
 #endif

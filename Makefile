@@ -1,3 +1,4 @@
+SRCDIR	= srcs
 SRCS	= $(wildcard $(SRCDIR)/*.c)
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
@@ -7,7 +8,7 @@ CFLAGS	= -Wall -Wextra -Werror
 ARFLAGS	= rc
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(INCDIR1) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft

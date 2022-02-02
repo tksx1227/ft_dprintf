@@ -32,10 +32,11 @@ typedef struct s_print
 	bool	zero_flag;
 }	t_print;
 
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
 int		ft_printf(const char *format, ...);
-char	*ft_itoa_base(long long n, int base, bool islower);
+
+// Write functions
+int		ft_put2per(char **s);
+int		ft_putval(const char *s, int wc);
 
 // Core Parsers
 bool	ft_parser(char **fmt, va_list *ap, t_print *info);

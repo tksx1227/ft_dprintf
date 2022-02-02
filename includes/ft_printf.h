@@ -19,12 +19,12 @@
 
 typedef struct s_print
 {
-	int		wc;
 	int		width;
 	int		prec;
 	char	spec;
 	char	*content;
 	bool	is_zero;
+	bool	is_number;
 	bool	sharp_flag;
 	bool	space_flag;
 	bool	plus_flag;

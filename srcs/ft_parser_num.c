@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:31:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 17:38:13 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:01:58 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ bool	ft_parse_digit(va_list *ap, t_print *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->is_number = true;
 	return (true);
 }
 
@@ -44,5 +45,6 @@ bool	ft_parse_uint(va_list *ap, t_print *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->is_number = true;
 	return (true);
 }

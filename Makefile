@@ -1,27 +1,27 @@
-SRCDIR	= srcs
-LIBDIR	= libft
-INCDIR1	= includes
-INCDIR2	= libft/includes
-SRCS	= $(wildcard $(SRCDIR)/*.c) \
-		  $(wildcard $(LIBDIR)/$(SRCDIR)/*.c)
+SRCS	= $(wildcard $(SRCDIR)/*.c)
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
+INCDIR	= ./includes
 NAME	= libftprintf.a
 CFLAGS	= -Wall -Wextra -Werror
 ARFLAGS	= rc
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(INCDIR1) -I$(INCDIR2) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -I$(INCDIR1) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
+	$(MAKE) -C ./libft
+	cp ./libft/libft.a $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean:
+	$(MAKE) -C ./libft clean
 	$(RM) $(OBJS)
 
 fclean: clean
+	$(RM) ./libft/libft.a
 	$(RM) $(NAME)
 
 re: fclean all

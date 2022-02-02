@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 17:20:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:57:02 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
 {
-	int	precision;
+	int	prec;
 
 	if (**fmt != '.')
 		return ;
@@ -22,18 +22,18 @@ void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
 	if (**fmt == '*')
 	{
 		*fmt += 1;
-		precision = (int)va_arg(*ap, int);
+		prec = (int)va_arg(*ap, int);
 	}
 	else if (ft_isdigit(**fmt))
 	{
-		precision = get_digit_part(fmt);
+		prec = get_digit_part(fmt);
 	}
 	else
 	{
-		precision = 0;
+		prec = 0;
 	}
-	if (0 <= precision)
-		info->precision = precision;
+	if (0 <= prec)
+		info->prec = prec;
 }
 
 void	ft_parse_flag(char **fmt, t_print *info)

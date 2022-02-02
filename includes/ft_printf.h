@@ -57,6 +57,8 @@ bool	ft_parse_uint(va_list *ap, t_print *info);
 // Attacher
 bool	ft_attacher(t_print *info);
 bool	ft_attach_sharp_flag(t_print *info);
+bool	ft_attach_plus_flag(t_print *info);
+bool	ft_attach_space_flag(t_print *info);
 
 // Utils
 int		get_digit_part(char **fmt);

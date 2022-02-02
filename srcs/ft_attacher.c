@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:12:52 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 13:20:23 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 01:37:28 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,15 @@ bool	ft_attacher(t_print *info)
 {
 	bool	is_success;
 
-	is_success = true;
+	is_success = ft_attach_prec(info);
+	if (is_success && info->width != 0)
+		is_success = ft_attach_width(info);
 	if (is_success && info->plus_flag)
 		is_success = ft_attach_plus_flag(info);
-	if (is_success && info->sharp_flag)
-		is_success = ft_attach_sharp_flag(info);
-	if (is_success && info->minus_flag)
-		is_success = ft_attach_minus_flag(info);
 	if (is_success && !info->plus_flag && info->space_flag)
 		is_success = ft_attach_space_flag(info);
-	if (is_success && !info->minus_flag && info->zero_flag)
-		is_success = ft_attach_zero_flag(info);
+	if (is_success && info->sharp_flag)
+		is_success = ft_attach_sharp_flag(info);
 	return (is_success);
 }
 
@@ -64,7 +62,7 @@ static bool	ft_attach_plus_space_base(t_print *info, char *s)
 {
 	char	*prefix;
 
-	if (info->spec != 'd' && info->spec != 'i')
+	if (!info->is_number)
 		return (false);
 	if (info->content[0] != '-')
 	{

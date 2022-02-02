@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 01:54:29 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:19:19 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *fmt, ...)
 {

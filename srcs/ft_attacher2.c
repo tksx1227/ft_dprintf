@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 23:09:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:04:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:19:45 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static bool	ft_attach_width_zero_base(t_print *info, char c);
 

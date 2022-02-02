@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:31:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:01:58 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:20:35 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 bool	ft_parse_digit(va_list *ap, t_print *info)
 {

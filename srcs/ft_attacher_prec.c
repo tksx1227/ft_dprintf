@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:55:13 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 19:06:53 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 02:19:55 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 bool	ft_attach_prec(t_print *info)
 {

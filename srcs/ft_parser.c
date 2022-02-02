@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 02:17:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:17:07 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,35 @@ bool	ft_parser(char **fmt, va_list *ap, t_print *info)
 
 	ft_parse_flag(fmt, info);
 	ft_parse_width(fmt, ap, info);
+	ft_parse_precision(fmt, ap, info);
 	is_success = ft_parse_spec(fmt, info);
 	if (is_success)
 		is_success = ft_parse_arg(ap, info);
 	return (is_success);
+}
+
+void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
+{
+	int	precision;
+
+	if (**fmt != '.')
+		return ;
+	*fmt += 1;
+	if (**fmt == '*')
+	{
+		*fmt += 1;
+		precision = (int)va_arg(*ap, int);
+	}
+	else if (ft_isdigit(**fmt))
+	{
+		precision = get_digit_part(fmt);
+	}
+	else
+	{
+		precision = 0;
+	}
+	if (0 <= precision)
+		info->precision = precision;
 }
 
 void	ft_parse_flag(char **fmt, t_print *info)
@@ -33,8 +58,6 @@ void	ft_parse_flag(char **fmt, t_print *info)
 		info->minus_flag = true;
 	else if (flag == '0')
 		info->zero_flag = true;
-	else if (flag == '.')
-		info->dot_flag = true;
 	else if (flag == '#')
 		info->sharp_flag = true;
 	else if (flag == ' ')

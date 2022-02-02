@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 13:20:37 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:18:02 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_print
 {
 	int		wc;
 	int		width;
+	int		precision;
 	char	spec;
 	char	*content;
 	bool	sharp_flag;
@@ -28,7 +29,6 @@ typedef struct s_print
 	bool	plus_flag;
 	bool	minus_flag;
 	bool	zero_flag;
-	bool	dot_flag;
 }	t_print;
 
 int		ft_putchar(char c);
@@ -40,6 +40,7 @@ char	*ft_itoa_base(long long n, int base, bool islower);
 bool	ft_parser(char **fmt, va_list *ap, t_print *info);
 void	ft_parse_flag(char **fmt, t_print *info);
 void	ft_parse_width(char **fmt, va_list *ap, t_print *info);
+void	ft_parse_precision(char **fmt, va_list *ap, t_print *info);
 bool	ft_parse_spec(char **fmt, t_print *info);
 bool	ft_parse_arg(va_list *ap, t_print *info);
 

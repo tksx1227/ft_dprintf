@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/02 01:11:11 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/02 02:17:55 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_parse_flag(char **fmt, t_print *info)
 
 void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 {
-	size_t	width;
+	int	width;
 
 	width = 0;
 	if (**fmt == '*')
@@ -64,16 +64,9 @@ void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 	}
 	else
 	{
-		while (ft_isdigit(**fmt))
-		{
-			width = width * 10 + (**fmt - '0');
-			*fmt += 1;
-		}
+		width = get_digit_part(fmt);
 	}
-	if ((size_t)INT_MAX < width)
-		info->width = -1;
-	else
-		info->width = width;
+	info->width = width;
 }
 
 bool	ft_parse_spec(char **fmt, t_print *info)

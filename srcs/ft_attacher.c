@@ -29,3 +29,21 @@ bool	ft_attacher(t_print *info)
 		is_success = ft_attach_zero_flag(info);
 	return (is_success);
 }
+
+bool	ft_attach_sharp_flag(t_print *info)
+{
+	char	*prefix;
+
+	if (info->spec != 'x' && info->spec != 'X')
+		return (false);
+	if (info->spec == 'x')
+		prefix = ft_strdup("0x");
+	else
+		prefix = ft_strdup("0x");
+	if (prefix == NULL)
+		return (false);
+	info->content = add_prefix_with_free(info->content, prefix);
+	if (info->content == NULL)
+		return (false);
+	return (true);
+}

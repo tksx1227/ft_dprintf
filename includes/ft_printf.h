@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:09:08 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/04 01:18:58 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ char	*add_prefix_with_free(char *s, char *prefix);
 char	*add_suffix_with_free(char *s, char *suffix);
 void	clear_info(t_print *info, void (*del)(void *));
 char	*ft_itoa_base(long long n, int base, bool islower);
+char	*ft_itoa_base_4b(int n, int base, bool is_unsigned);
+char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned);
 
 #endif

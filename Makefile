@@ -1,18 +1,30 @@
-SRCDIR	= srcs
-SRCS	= $(wildcard $(SRCDIR)/*.c)
-OBJS	= $(SRCS:.c=.o)
-CC		= cc
-INCDIR	= ./includes
-NAME	= libftprintf.a
-CFLAGS	= -Wall -Wextra -Werror
-ARFLAGS	= rc
+SRCDIR	:= ./srcs/
+SRCS	:= ft_attacher.c \
+		   ft_attacher2.c \
+		   ft_attacher_prec.c \
+		   ft_itoa_base.c \
+		   ft_parser_char.c \
+		   ft_parser_core.c \
+		   ft_parser_manager.c \
+		   ft_parser_num.c \
+		   ft_parser_str.c \
+		   ft_printf.c \
+		   ft_putval.c \
+		   ft_utils.c
+SRCS	:= $(addprefix $(SRCDIR), $(SRCS))
+OBJS	:= $(SRCS:.c=.o)
+CC		:= cc
+INCDIR	:= ./includes
+NAME	:= libftprintf.a
+CFLAGS	:= -Wall -Wextra -Werror
+ARFLAGS	:= rc
 
 .c.o:
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
-	cp ./libft/libft.a $(NAME)
+	mv ./libft/libft.a $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 all: $(NAME)
@@ -22,7 +34,6 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) ./libft/libft.a
 	$(RM) $(NAME)
 
 re: fclean all

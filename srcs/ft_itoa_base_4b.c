@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_b8.c                                  :+:      :+:    :+:   */
+/*   ft_itoa_base_4b.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:17:14 by ttomori          ###   ########.fr       */
+/*   Created: 2022/02/04 00:23:10 by ttomori           #+#    #+#             */
+/*   Updated: 2022/02/04 01:17:44 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_digit_base_8b(long long n, int base, bool is_unsigned);
 char		convert_char(int n);
+static int	count_digit_base_4b(int n, int base, bool is_unsigned);
 
-char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
+char	*ft_itoa_base_4b(int n, int base, bool is_unsigned)
 {
 	int		i;
 	int		dc;
 	char	*p;
 
-	dc = count_digit_base_8b(n, base, is_unsigned);
+	dc = count_digit_base_4b(n, base, is_unsigned);
 	p = (char *)ft_calloc(dc + 1, sizeof(char));
 	if (p == NULL)
 		return (NULL);
@@ -38,8 +38,8 @@ char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 	{
 		if (is_unsigned)
 		{
-			p[dc - i] = convert_char((unsigned long long)n % base);
-			n /= (unsigned long long)base;
+			p[dc - i] = convert_char((unsigned int)n % base);
+			n /= (unsigned int)base;
 		}
 		else
 		{
@@ -50,18 +50,7 @@ char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 	return (p);
 }
 
-char	convert_char(int n)
-{
-	if (n < 0)
-		n *= -1;
-	if (10 <= n)
-		n += 'a' - 10;
-	else
-		n += '0';
-	return ((char)n);
-}
-
-static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
+static int	count_digit_base_4b(int n, int base, bool is_unsigned)
 {
 	int	counter;
 
@@ -74,7 +63,7 @@ static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
 	{
 		counter++;
 		if (is_unsigned)
-			n /= (unsigned long long)base;
+			n /= (unsigned int)base;
 		else
 			n /= base;
 	}

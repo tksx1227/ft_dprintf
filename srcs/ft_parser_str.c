@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:20:43 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/03 13:16:54 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ bool	ft_parse_str(va_list *ap, t_print *info)
 {
 	char	*s;
 
-	s = ft_strdup((char *)va_arg(*ap, char *));
+	s = (char *)va_arg(*ap, char *);
+	if (s == NULL)
+		s = ft_strdup("(null)");
+	else
+		s = ft_strdup(s);
 	if (s == NULL)
 		return (false);
 	info->content = s;

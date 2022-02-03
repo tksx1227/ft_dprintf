@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:12:52 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:19:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/04 01:56:05 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	ft_attach_sharp_flag(t_print *info)
 	if (info->spec == 'x')
 		prefix = ft_strdup("0x");
 	else
-		prefix = ft_strdup("0x");
+		prefix = ft_strdup("0X");
 	if (prefix == NULL)
 		return (false);
 	info->content = add_prefix_with_free(info->content, prefix);

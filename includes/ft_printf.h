@@ -80,7 +80,6 @@ int		add_write_count(int current, int new);
 char	*add_prefix_with_free(char *s, char *prefix);
 char	*add_suffix_with_free(char *s, char *suffix);
 void	clear_info(t_print *info, void (*del)(void *));
-char	*ft_itoa_base(long long n, int base, bool islower);
 char	*ft_itoa_base_4b(int n, int base, bool is_unsigned);
 char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned);
 

@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:30:30 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:20:08 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/04 01:51:12 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static bool	ft_parse_hex(va_list *ap, t_print *info, bool islower);
+static bool	ft_parse_hex(va_list *ap, t_print *info);
 
 bool	ft_parse_char(va_list *ap, t_print *info)
 {
@@ -46,21 +46,34 @@ bool	ft_parse_per(t_print *info)
 
 bool	ft_parse_hex_lower(va_list *ap, t_print *info)
 {
-	return (ft_parse_hex(ap, info, true));
+	return (ft_parse_hex(ap, info));
 }
 
 bool	ft_parse_hex_upper(va_list *ap, t_print *info)
 {
-	return (ft_parse_hex(ap, info, false));
+	size_t	i;
+	bool	is_success;
+
+	is_success = ft_parse_hex(ap, info);
+	if (is_success)
+	{
+		i = 0;
+		while (info->content[i] != '\0')
+		{
+			info->content[i] = ft_toupper(info->content[i]);
+			i++;
+		}
+	}
+	return (is_success);
 }
 
-static bool	ft_parse_hex(va_list *ap, t_print *info, bool islower)
+static bool	ft_parse_hex(va_list *ap, t_print *info)
 {
 	unsigned int	n;
 	char			*s;
 
 	n = (unsigned int)va_arg(*ap, unsigned int);
-	s = ft_itoa_base(n, 16, islower);
+	s = ft_itoa_base_4b(n, 16, true);
 	if (s == NULL)
 		return (false);
 	info->content = s;

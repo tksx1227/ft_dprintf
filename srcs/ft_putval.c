@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:41:26 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:20:54 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 00:59:28 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ int	ft_put2per(char **s)
 	return ((int)ret);
 }
 
-int	ft_putval(const char *s, int wc)
+int	ft_putval(t_print *info, int wc)
 {
 	size_t	len;
 
-	len = ft_strlen(s);
+	len = ft_strlen(info->content);
+	if (info->is_null_char)
+		len++;
 	if ((size_t)INT_MAX - len < (size_t)wc)
 		return (-1);
-	write(1, s, len);
+	write(1, info->content, len);
 	return (len);
 }

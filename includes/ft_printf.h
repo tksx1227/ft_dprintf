@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:18:58 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 00:58:44 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_print
 	char	*content;
 	bool	is_zero;
 	bool	is_number;
+	bool	is_null_char;
 	bool	sharp_flag;
 	bool	space_flag;
 	bool	plus_flag;
@@ -36,7 +37,7 @@ int		ft_printf(const char *format, ...);
 
 // Write functions
 int		ft_put2per(char **s);
-int		ft_putval(const char *s, int wc);
+int		ft_putval(t_print *info, int wc);
 
 // Core Parsers
 bool	ft_parser(char **fmt, va_list *ap, t_print *info);

@@ -6,18 +6,17 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:17:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/04 23:17:36 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	count_digit_base_8b(long long n, int base, bool is_unsigned);
-char		convert_char(int n);
+static void	set_char_8b(char *p, long long n, int base, bool is_unsigned);
 
 char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 {
-	int		i;
 	int		dc;
 	char	*p;
 
@@ -25,40 +24,12 @@ char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 	p = (char *)ft_calloc(dc + 1, sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	if (n == 0 || (base == 10 && n < 0))
-	{
-		if (n == 0)
-			p[0] = '0';
-		else if (base == 10 && n < 0)
-			p[0] = '-';
-		dc--;
-	}
-	i = 0;
-	while (i++ < dc)
-	{
-		if (is_unsigned)
-		{
-			p[dc - i] = convert_char((unsigned long long)n % base);
-			n /= (unsigned long long)base;
-		}
-		else
-		{
-			p[dc - i] = convert_char(n % base);
-			n /= base;
-		}
-	}
+	if (n == 0)
+		*p = '0';
+	else if (base == 10 && n < 0)
+		*p = '-';
+	set_char_8b(p + dc - 1, n, base, is_unsigned);
 	return (p);
-}
-
-char	convert_char(int n)
-{
-	if (n < 0)
-		n *= -1;
-	if (10 <= n)
-		n += 'a' - 10;
-	else
-		n += '0';
-	return ((char)n);
 }
 
 static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
@@ -79,4 +50,28 @@ static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
 			n /= base;
 	}
 	return (counter);
+}
+
+static void	set_char_8b(char *p, long long n, int base, bool is_unsigned)
+{
+	char	c;
+
+	while (n != 0)
+	{
+		if (is_unsigned)
+			c = (unsigned long long)n % base;
+		else
+			c = n % base;
+		if (c < 0)
+			c *= -1;
+		if (10 <= c)
+			c += 'a' - 10;
+		else
+			c += '0';
+		*p-- = c;
+		if (is_unsigned)
+			n /= (unsigned long long)base;
+		else
+			n /= base;
+	}
 }

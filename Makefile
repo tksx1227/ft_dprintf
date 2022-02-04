@@ -2,7 +2,8 @@ SRCDIR	:= ./srcs/
 SRCS	:= ft_attacher.c \
 		   ft_attacher2.c \
 		   ft_attacher_prec.c \
-		   ft_itoa_base.c \
+		   ft_itoa_base_4b.c \
+		   ft_itoa_base_8b.c \
 		   ft_parser_char.c \
 		   ft_parser_core.c \
 		   ft_parser_manager.c \
@@ -38,6 +39,6 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(NAME)
+bonus: all
 
 .PHONY: all clean fclean re bonus

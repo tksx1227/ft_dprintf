@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 23:17:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/04 23:31:47 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 		return (NULL);
 	if (n == 0)
 		*p = '0';
-	else if (base == 10 && n < 0)
+	else if (!is_unsigned && base == 10 && n < 0)
 		*p = '-';
 	set_char_8b(p + dc - 1, n, base, is_unsigned);
 	return (p);
@@ -39,7 +39,7 @@ static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
 	if (n == 0)
 		return (1);
 	counter = 0;
-	if (base == 10 && n < 0)
+	if (!is_unsigned && base == 10 && n < 0)
 		counter++;
 	while (n != 0)
 	{

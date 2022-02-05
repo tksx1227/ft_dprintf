@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:58:44 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 12:04:49 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,20 @@ int		ft_printf(const char *format, ...);
 int		ft_put2per(char **s);
 int		ft_putval(t_print *info, int wc);
 
-// Core Parsers
-bool	ft_parser(char **fmt, va_list *ap, t_print *info);
-void	ft_parse_flag(char **fmt, t_print *info);
-void	ft_parse_width(char **fmt, va_list *ap, t_print *info);
-void	ft_parse_precision(char **fmt, va_list *ap, t_print *info);
-bool	ft_parse_spec(char **fmt, t_print *info);
-bool	ft_parse_arg(va_list *ap, t_print *info);
+// Parser
+bool	ft_parse(char **fmt, va_list *ap, t_print *info);
 
-// Sub Parsers
-bool	ft_parse_char(va_list *ap, t_print *info);
-bool	ft_parse_per(t_print *info);
-bool	ft_parse_hex_lower(va_list *ap, t_print *info);
-bool	ft_parse_hex_upper(va_list *ap, t_print *info);
-bool	ft_parse_str(va_list *ap, t_print *info);
-bool	ft_parse_ptr(va_list *ap, t_print *info);
-bool	ft_parse_digit(va_list *ap, t_print *info);
-bool	ft_parse_int(va_list *ap, t_print *info);
-bool	ft_parse_uint(va_list *ap, t_print *info);
+// Setters
+bool	ft_set_arg(va_list *ap, t_print *info);
+bool	ft_set_char(va_list *ap, t_print *info);
+bool	ft_set_per(t_print *info);
+bool	ft_set_hex_lower(va_list *ap, t_print *info);
+bool	ft_set_hex_upper(va_list *ap, t_print *info);
+bool	ft_set_str(va_list *ap, t_print *info);
+bool	ft_set_ptr(va_list *ap, t_print *info);
+bool	ft_set_digit(va_list *ap, t_print *info);
+bool	ft_set_int(va_list *ap, t_print *info);
+bool	ft_set_uint(va_list *ap, t_print *info);
 
 // Attacher of flags
 bool	ft_attacher(t_print *info);

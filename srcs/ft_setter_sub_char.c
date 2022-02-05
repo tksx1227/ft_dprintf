@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser_char.c                                   :+:      :+:    :+:   */
+/*   ft_setter_sub_char.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-static bool	ft_parse_hex(va_list *ap, t_print *info);
+static bool	ft_set_hex(va_list *ap, t_print *info);
 
-bool	ft_parse_char(va_list *ap, t_print *info)
+bool	ft_set_char(va_list *ap, t_print *info)
 {
 	char	c;
 	char	tmp[2];
@@ -32,7 +32,7 @@ bool	ft_parse_char(va_list *ap, t_print *info)
 	return (true);
 }
 
-bool	ft_parse_per(t_print *info)
+bool	ft_set_per(t_print *info)
 {
 	char	tmp[2];
 	char	*s;
@@ -46,17 +46,17 @@ bool	ft_parse_per(t_print *info)
 	return (true);
 }
 
-bool	ft_parse_hex_lower(va_list *ap, t_print *info)
+bool	ft_set_hex_lower(va_list *ap, t_print *info)
 {
-	return (ft_parse_hex(ap, info));
+	return (ft_set_hex(ap, info));
 }
 
-bool	ft_parse_hex_upper(va_list *ap, t_print *info)
+bool	ft_set_hex_upper(va_list *ap, t_print *info)
 {
 	size_t	i;
 	bool	is_success;
 
-	is_success = ft_parse_hex(ap, info);
+	is_success = ft_set_hex(ap, info);
 	if (is_success)
 	{
 		i = 0;
@@ -69,7 +69,7 @@ bool	ft_parse_hex_upper(va_list *ap, t_print *info)
 	return (is_success);
 }
 
-static bool	ft_parse_hex(va_list *ap, t_print *info)
+static bool	ft_set_hex(va_list *ap, t_print *info)
 {
 	unsigned int	n;
 	char			*s;

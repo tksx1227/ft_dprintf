@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:59:53 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 01:13:37 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%')
 		{
 			fmt++;
-			if (ft_parser((char **)&fmt, &ap, &info) && ft_attacher(&info))
+			if (ft_parse((char **)&fmt, &ap, &info) && ft_attacher(&info))
 				wc = ft_putval(&info, ret);
 			else
 				wc = -1;

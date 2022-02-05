@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser_num.c                                    :+:      :+:    :+:   */
+/*   ft_setter_sub_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 00:31:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:51:33 by ttomori          ###   ########.fr       */
+/*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
+/*   Updated: 2022/02/04 01:50:54 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_parse_digit(va_list *ap, t_print *info)
+bool	ft_set_str(va_list *ap, t_print *info)
 {
-	int		n;
 	char	*s;
 
-	n = (int)va_arg(*ap, int);
-	if (n == 0)
-		info->is_zero = true;
-	s = ft_itoa_base_4b(n, 10, false);
+	s = (char *)va_arg(*ap, char *);
+	if (s == NULL)
+		s = ft_strdup("(null)");
+	else
+		s = ft_strdup(s);
 	if (s == NULL)
 		return (false);
 	info->content = s;
-	info->is_number = true;
 	return (true);
 }
 
-bool	ft_parse_int(va_list *ap, t_print *info)
+bool	ft_set_ptr(va_list *ap, t_print *info)
 {
-	return (ft_parse_digit(ap, info));
-}
+	char				*s;
+	unsigned long long	n;
 
-bool	ft_parse_uint(va_list *ap, t_print *info)
-{
-	char			*s;
-	unsigned int	n;
-
-	n = (unsigned int)va_arg(*ap, unsigned int);
-	if (n == 0)
-		info->is_zero = true;
-	s = ft_itoa_base_4b(n, 10, true);
+	n = (unsigned long long)va_arg(*ap, void *);
+	s = ft_itoa_base_8b(n, 16, true);
 	if (s == NULL)
 		return (false);
 	info->content = s;
-	info->is_number = true;
 	return (true);
 }

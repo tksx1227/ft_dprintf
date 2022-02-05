@@ -17,6 +17,8 @@
 # include <stdbool.h>
 # include "../libft/includes/libft.h"
 
+# define INVALID_NUM -1
+
 typedef struct s_print
 {
 	int		width;

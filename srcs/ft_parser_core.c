@@ -6,35 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:20:17 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 10:33:38 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
-{
-	int	prec;
-
-	if (**fmt != '.')
-		return ;
-	*fmt += 1;
-	if (**fmt == '*')
-	{
-		*fmt += 1;
-		prec = (int)va_arg(*ap, int);
-	}
-	else if (ft_isdigit(**fmt))
-	{
-		prec = get_digit_part(fmt);
-	}
-	else
-	{
-		prec = 0;
-	}
-	if (0 <= prec)
-		info->prec = prec;
-}
 
 void	ft_parse_flag(char **fmt, t_print *info)
 {
@@ -61,13 +37,15 @@ void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 {
 	int	width;
 
-	width = 0;
 	if (**fmt == '*')
 	{
 		width = (int)va_arg(*ap, int);
 		if (width < 0)
 		{
-			width *= -1;
+			if (width == INT_MIN)
+				width = INVALID_NUM;
+			else
+				width *= -1;
 			info->minus_flag = true;
 		}
 		*fmt += 1;
@@ -77,6 +55,30 @@ void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 		width = get_digit_part(fmt);
 	}
 	info->width = width;
+}
+
+void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
+{
+	int	prec;
+
+	if (**fmt != '.')
+		return ;
+	*fmt += 1;
+	if (**fmt == '*')
+	{
+		*fmt += 1;
+		prec = (int)va_arg(*ap, int);
+	}
+	else if (ft_isdigit(**fmt))
+	{
+		prec = get_digit_part(fmt);
+	}
+	else
+	{
+		prec = 0;
+	}
+	if (0 <= prec)
+		info->prec = prec;
 }
 
 bool	ft_parse_spec(char **fmt, t_print *info)

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 17:20:38 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:20:26 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/05 10:25:55 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	ft_parser(char **fmt, va_list *ap, t_print *info)
 
 	ft_parse_flag(fmt, info);
 	ft_parse_width(fmt, ap, info);
+	if (info->width == INVALID_NUM)
+		return (false);
 	ft_parse_precision(fmt, ap, info);
 	is_success = ft_parse_spec(fmt, info);
 	if (is_success)

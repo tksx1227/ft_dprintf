@@ -50,7 +50,7 @@ int	get_digit_part(char **fmt)
 		{
 			ret = ret * 10 + (**fmt - '0');
 			if ((long long)INT_MAX < ret)
-				ret = -1;
+				ret = INVALID_NUM;
 		}
 		*fmt += 1;
 	}

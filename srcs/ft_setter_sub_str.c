@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser_str.c                                    :+:      :+:    :+:   */
+/*   ft_setter_sub_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:50:54 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:09:09 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_parse_str(va_list *ap, t_print *info)
+bool	ft_set_str(va_list *ap, t_printf *info)
 {
 	char	*s;
 
@@ -27,13 +27,13 @@ bool	ft_parse_str(va_list *ap, t_print *info)
 	return (true);
 }
 
-bool	ft_parse_ptr(va_list *ap, t_print *info)
+bool	ft_set_ptr(va_list *ap, t_printf *info)
 {
-	char				*s;
-	unsigned long long	n;
+	char	*s;
+	t_ull	n;
 
-	n = (unsigned long long)va_arg(*ap, void *);
-	s = ft_itoa_base_8b(n, 16, true);
+	n = (t_ull)va_arg(*ap, void *);
+	s = ft_itoa_base_8bytes(n, 16, true);
 	if (s == NULL)
 		return (false);
 	info->content = s;

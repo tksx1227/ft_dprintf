@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:41:26 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:59:28 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:08:26 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_put2per(char **s)
 	return ((int)ret);
 }
 
-int	ft_putval(t_print *info, int wc)
+int	ft_putval(t_printf *info, int wc)
 {
 	size_t	len;
 

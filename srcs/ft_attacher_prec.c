@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:55:13 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:19:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:07:45 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_attach_prec(t_print *info)
+bool	ft_attach_prec(t_printf *info)
 {
 	bool	is_success;
 
@@ -31,7 +31,7 @@ bool	ft_attach_prec(t_print *info)
 	return (is_success);
 }
 
-bool	ft_attach_prec_ptr(t_print *info)
+bool	ft_attach_prec_ptr(t_printf *info)
 {
 	size_t	len;
 	char	*prefix;
@@ -53,7 +53,7 @@ bool	ft_attach_prec_ptr(t_print *info)
 	return (true);
 }
 
-bool	ft_attach_prec_str(t_print *info)
+bool	ft_attach_prec_str(t_printf *info)
 {
 	size_t	len;
 	char	*tmp;
@@ -69,7 +69,7 @@ bool	ft_attach_prec_str(t_print *info)
 	return (true);
 }
 
-bool	ft_attach_prec_hex(t_print *info)
+bool	ft_attach_prec_hex(t_printf *info)
 {
 	size_t	len;
 	char	*prefix;
@@ -89,7 +89,7 @@ bool	ft_attach_prec_hex(t_print *info)
 	return (true);
 }
 
-bool	ft_attach_prec_num(t_print *info)
+bool	ft_attach_prec_num(t_printf *info)
 {
 	size_t	len;
 	char	*prefix;

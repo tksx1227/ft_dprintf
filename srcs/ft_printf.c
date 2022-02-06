@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:59:53 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:10:23 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_printf(const char *fmt, ...)
 {
-	int		wc;
-	int		ret;
-	va_list	ap;
-	t_print	info;
+	int			wc;
+	int			ret;
+	va_list		ap;
+	t_printf	info;
 
 	ret = 0;
 	va_start(ap, fmt);
@@ -27,7 +27,7 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%')
 		{
 			fmt++;
-			if (ft_parser((char **)&fmt, &ap, &info) && ft_attacher(&info))
+			if (ft_parse((char **)&fmt, &ap, &info) && ft_attacher(&info))
 				wc = ft_putval(&info, ret);
 			else
 				wc = -1;

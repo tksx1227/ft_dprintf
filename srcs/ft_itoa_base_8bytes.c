@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_4b.c                                  :+:      :+:    :+:   */
+/*   ft_itoa_base_8bytes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 00:23:10 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 23:30:58 by ttomori          ###   ########.fr       */
+/*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
+/*   Updated: 2022/02/06 13:25:28 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_digit_base_4b(int n, int base, bool is_unsigned);
-static void	set_char_4b(char *p, int n, int base, bool is_unsigned);
+static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned);
+static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned);
 
-char	*ft_itoa_base_4b(int n, int base, bool is_unsigned)
+char	*ft_itoa_base_8bytes(t_ll n, int base, bool is_unsigned)
 {
 	int		dc;
 	char	*p;
 
-	dc = count_digit_base_4b(n, base, is_unsigned);
+	dc = count_digit_base_8bytes(n, base, is_unsigned);
 	p = (char *)ft_calloc(dc + 1, sizeof(char));
 	if (p == NULL)
 		return (NULL);
@@ -28,11 +28,11 @@ char	*ft_itoa_base_4b(int n, int base, bool is_unsigned)
 		*p = '0';
 	else if (!is_unsigned && base == 10 && n < 0)
 		*p = '-';
-	set_char_4b(p + dc - 1, n, base, is_unsigned);
+	set_char_8bytes(p + dc - 1, n, base, is_unsigned);
 	return (p);
 }
 
-static int	count_digit_base_4b(int n, int base, bool is_unsigned)
+static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned)
 {
 	int	counter;
 
@@ -45,21 +45,21 @@ static int	count_digit_base_4b(int n, int base, bool is_unsigned)
 	{
 		counter++;
 		if (is_unsigned)
-			n /= (unsigned int)base;
+			n /= (t_ull)base;
 		else
 			n /= base;
 	}
 	return (counter);
 }
 
-static void	set_char_4b(char *p, int n, int base, bool is_unsigned)
+static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned)
 {
 	char	c;
 
 	while (n != 0)
 	{
 		if (is_unsigned)
-			c = (unsigned int)n % base;
+			c = (t_ull)n % base;
 		else
 			c = n % base;
 		if (c < 0)
@@ -70,7 +70,7 @@ static void	set_char_4b(char *p, int n, int base, bool is_unsigned)
 			c += '0';
 		*p-- = c;
 		if (is_unsigned)
-			n /= (unsigned int)base;
+			n /= (t_ull)base;
 		else
 			n /= base;
 	}

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:31:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:51:33 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:26:12 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	ft_set_digit(va_list *ap, t_print *info)
 	n = (int)va_arg(*ap, int);
 	if (n == 0)
 		info->is_zero = true;
-	s = ft_itoa_base_4b(n, 10, false);
+	s = ft_itoa_base_4bytes(n, 10, false);
 	if (s == NULL)
 		return (false);
 	info->content = s;
@@ -41,7 +41,7 @@ bool	ft_set_uint(va_list *ap, t_print *info)
 	n = (unsigned int)va_arg(*ap, unsigned int);
 	if (n == 0)
 		info->is_zero = true;
-	s = ft_itoa_base_4b(n, 10, true);
+	s = ft_itoa_base_4bytes(n, 10, true);
 	if (s == NULL)
 		return (false);
 	info->content = s;

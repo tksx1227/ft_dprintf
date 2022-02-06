@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:30:30 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:55:08 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:26:00 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static bool	ft_set_hex(va_list *ap, t_print *info)
 	char			*s;
 
 	n = (unsigned int)va_arg(*ap, unsigned int);
-	s = ft_itoa_base_4b(n, 16, true);
+	s = ft_itoa_base_4bytes(n, 16, true);
 	if (s == NULL)
 		return (false);
 	info->content = s;

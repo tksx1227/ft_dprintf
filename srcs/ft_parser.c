@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	ft_parse_flag(char **fmt, t_print *info);
+static void	ft_parse_flags(char **fmt, t_print *info);
 static void	ft_parse_width(char **fmt, va_list *ap, t_print *info);
 static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info);
 static void	ft_parse_spec(char **fmt, t_print *info);
@@ -21,7 +21,7 @@ bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 {
 	bool	is_success;
 
-	ft_parse_flag(fmt, info);
+	ft_parse_flags(fmt, info);
 	ft_parse_width(fmt, ap, info);
 	ft_parse_precision(fmt, ap, info);
 	ft_parse_spec(fmt, info);
@@ -29,7 +29,7 @@ bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 	return (is_success);
 }
 
-static void	ft_parse_flag(char **fmt, t_print *info)
+static void	ft_parse_flags(char **fmt, t_print *info)
 {
 	char	c;
 

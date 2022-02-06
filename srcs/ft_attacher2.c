@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 23:09:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/03 02:19:45 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:05:29 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static bool	ft_attach_width_zero_base(t_print *info, char c)
 		if (s == NULL)
 			return (false);
 		ft_memset(s, c, len);
-		if (info->minus_flag)
+		if (info->left_align)
 			info->content = add_suffix_with_free(info->content, s);
 		else
 			info->content = add_prefix_with_free(info->content, s);

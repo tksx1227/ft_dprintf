@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:19:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:02:27 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	clear_info(t_print *info, void (*del)(void *))
 	info->sharp_flag = false;
 	info->space_flag = false;
 	info->plus_flag = false;
-	info->minus_flag = false;
+	info->left_align = false;
 	info->zero_flag = false;
 	if (del != NULL)
 		del(info->content);

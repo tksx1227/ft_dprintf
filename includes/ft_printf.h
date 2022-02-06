@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:23:42 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:02:13 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_print
 	bool	sharp_flag;
 	bool	space_flag;
 	bool	plus_flag;
-	bool	minus_flag;
+	bool	left_align;
 	bool	zero_flag;
 }	t_print;
 

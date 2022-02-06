@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 12:19:41 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:04:56 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,25 @@ bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 
 static void	ft_parse_flag(char **fmt, t_print *info)
 {
-	char	flag;
+	char	c;
 
-	flag = **fmt;
-	if (flag == '-')
-		info->minus_flag = true;
-	else if (flag == '0')
-		info->zero_flag = true;
-	else if (flag == '#')
-		info->sharp_flag = true;
-	else if (flag == ' ')
-		info->space_flag = true;
-	else if (flag == '+')
-		info->plus_flag = true;
-	else
-		return ;
-	*fmt += 1;
-	ft_parse_flag(fmt, info);
+	while (1)
+	{
+		c = **fmt;
+		if (c == '-')
+			info->left_align = true;
+		else if (c == '0')
+			info->zero_flag = true;
+		else if (c == '#')
+			info->sharp_flag = true;
+		else if (c == ' ')
+			info->space_flag = true;
+		else if (c == '+')
+			info->plus_flag = true;
+		else
+			break ;
+		*fmt += 1;
+	}
 }
 
 static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
@@ -60,7 +62,7 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 		if (width < 0)
 		{
 			width *= -1;
-			info->minus_flag = true;
+			info->left_align = true;
 		}
 		*fmt += 1;
 	}

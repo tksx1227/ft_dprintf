@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:26:15 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:09:09 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_set_str(va_list *ap, t_print *info)
+bool	ft_set_str(va_list *ap, t_printf *info)
 {
 	char	*s;
 
@@ -27,7 +27,7 @@ bool	ft_set_str(va_list *ap, t_print *info)
 	return (true);
 }
 
-bool	ft_set_ptr(va_list *ap, t_print *info)
+bool	ft_set_ptr(va_list *ap, t_printf *info)
 {
 	char	*s;
 	t_ull	n;

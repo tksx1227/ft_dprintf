@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:12:52 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:20:55 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:07:32 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_attacher(t_print *info)
+bool	ft_attacher(t_printf *info)
 {
 	bool	is_success;
 
@@ -26,7 +26,7 @@ bool	ft_attacher(t_print *info)
 	return (is_success);
 }
 
-bool	ft_attach_sharp_flag(t_print *info)
+bool	ft_attach_sharp_flag(t_printf *info)
 {
 	char	*prefix;
 
@@ -44,7 +44,7 @@ bool	ft_attach_sharp_flag(t_print *info)
 	return (true);
 }
 
-bool	ft_attach_plus_sign(t_print *info)
+bool	ft_attach_plus_sign(t_printf *info)
 {
 	char	tmp[2];
 	char	*prefix;

@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:31:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:26:12 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:09:23 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_set_digit(va_list *ap, t_print *info)
+bool	ft_set_digit(va_list *ap, t_printf *info)
 {
 	int		n;
 	char	*s;
@@ -28,12 +28,12 @@ bool	ft_set_digit(va_list *ap, t_print *info)
 	return (true);
 }
 
-bool	ft_set_int(va_list *ap, t_print *info)
+bool	ft_set_int(va_list *ap, t_printf *info)
 {
 	return (ft_set_digit(ap, info));
 }
 
-bool	ft_set_uint(va_list *ap, t_print *info)
+bool	ft_set_uint(va_list *ap, t_printf *info)
 {
 	char			*s;
 	unsigned int	n;

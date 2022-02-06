@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:17:34 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:09:42 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	add_write_count(int current, int new)
 	return (current + new);
 }
 
-void	clear_info(t_print *info, void (*del)(void *))
+void	clear_info(t_printf *info, void (*del)(void *))
 {
 	info->width = 0;
 	info->prec = -1;

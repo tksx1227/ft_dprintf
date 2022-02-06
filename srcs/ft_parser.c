@@ -6,18 +6,18 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:17:00 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:08:11 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_parse_flags(char **fmt, t_print *info);
-static void	ft_parse_width(char **fmt, va_list *ap, t_print *info);
-static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info);
-static void	ft_parse_spec(char **fmt, t_print *info);
+static void	ft_parse_flags(char **fmt, t_printf *info);
+static void	ft_parse_width(char **fmt, va_list *ap, t_printf *info);
+static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info);
+static void	ft_parse_spec(char **fmt, t_printf *info);
 
-bool	ft_parse(char **fmt, va_list *ap, t_print *info)
+bool	ft_parse(char **fmt, va_list *ap, t_printf *info)
 {
 	bool	is_success;
 
@@ -29,7 +29,7 @@ bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 	return (is_success);
 }
 
-static void	ft_parse_flags(char **fmt, t_print *info)
+static void	ft_parse_flags(char **fmt, t_printf *info)
 {
 	char	c;
 
@@ -55,7 +55,7 @@ static void	ft_parse_flags(char **fmt, t_print *info)
 	}
 }
 
-static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
+static void	ft_parse_width(char **fmt, va_list *ap, t_printf *info)
 {
 	int	width;
 
@@ -76,7 +76,7 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 	info->width = width;
 }
 
-static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
+static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info)
 {
 	int	prec;
 
@@ -100,7 +100,7 @@ static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
 		info->prec = prec;
 }
 
-static void	ft_parse_spec(char **fmt, t_print *info)
+static void	ft_parse_spec(char **fmt, t_printf *info)
 {
 	char	spec;
 

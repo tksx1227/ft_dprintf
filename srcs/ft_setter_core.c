@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:01:17 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 12:01:24 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:08:38 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_set_arg(va_list *ap, t_print *info)
+bool	ft_set_arg(va_list *ap, t_printf *info)
 {
 	char	spec;
 	bool	is_success;

@@ -6,15 +6,15 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:30:30 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:26:00 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 15:08:57 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static bool	ft_set_hex(va_list *ap, t_print *info);
+static bool	ft_set_hex(va_list *ap, t_printf *info);
 
-bool	ft_set_char(va_list *ap, t_print *info)
+bool	ft_set_char(va_list *ap, t_printf *info)
 {
 	char	c;
 	char	tmp[2];
@@ -32,7 +32,7 @@ bool	ft_set_char(va_list *ap, t_print *info)
 	return (true);
 }
 
-bool	ft_set_per(t_print *info)
+bool	ft_set_per(t_printf *info)
 {
 	char	tmp[2];
 	char	*s;
@@ -46,12 +46,12 @@ bool	ft_set_per(t_print *info)
 	return (true);
 }
 
-bool	ft_set_hex_lower(va_list *ap, t_print *info)
+bool	ft_set_hex_lower(va_list *ap, t_printf *info)
 {
 	return (ft_set_hex(ap, info));
 }
 
-bool	ft_set_hex_upper(va_list *ap, t_print *info)
+bool	ft_set_hex_upper(va_list *ap, t_printf *info)
 {
 	size_t	i;
 	bool	is_success;
@@ -69,7 +69,7 @@ bool	ft_set_hex_upper(va_list *ap, t_print *info)
 	return (is_success);
 }
 
-static bool	ft_set_hex(va_list *ap, t_print *info)
+static bool	ft_set_hex(va_list *ap, t_printf *info)
 {
 	unsigned int	n;
 	char			*s;

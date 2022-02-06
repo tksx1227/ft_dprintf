@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 12:19:24 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:19:55 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	clear_info(t_print *info, void (*del)(void *))
 
 int	get_digits(char **fmt)
 {
-	long long	ret;
+	t_ll	ret;
 
 	ret = 0;
 	while (ft_isdigit(**fmt))
@@ -47,7 +47,7 @@ int	get_digits(char **fmt)
 		if (ret != INVALID_NUM)
 		{
 			ret = ret * 10 + (**fmt - '0');
-			if ((long long)INT_MAX < ret)
+			if ((t_ll)INT_MAX < ret)
 				ret = INVALID_NUM;
 		}
 		*fmt += 1;

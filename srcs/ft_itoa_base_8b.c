@@ -6,16 +6,16 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 23:31:47 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:18:53 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_digit_base_8b(long long n, int base, bool is_unsigned);
-static void	set_char_8b(char *p, long long n, int base, bool is_unsigned);
+static int	count_digit_base_8b(t_ll n, int base, bool is_unsigned);
+static void	set_char_8b(char *p, t_ll n, int base, bool is_unsigned);
 
-char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
+char	*ft_itoa_base_8b(t_ll n, int base, bool is_unsigned)
 {
 	int		dc;
 	char	*p;
@@ -32,7 +32,7 @@ char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned)
 	return (p);
 }
 
-static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
+static int	count_digit_base_8b(t_ll n, int base, bool is_unsigned)
 {
 	int	counter;
 
@@ -45,21 +45,21 @@ static int	count_digit_base_8b(long long n, int base, bool is_unsigned)
 	{
 		counter++;
 		if (is_unsigned)
-			n /= (unsigned long long)base;
+			n /= (t_ull)base;
 		else
 			n /= base;
 	}
 	return (counter);
 }
 
-static void	set_char_8b(char *p, long long n, int base, bool is_unsigned)
+static void	set_char_8b(char *p, t_ll n, int base, bool is_unsigned)
 {
 	char	c;
 
 	while (n != 0)
 	{
 		if (is_unsigned)
-			c = (unsigned long long)n % base;
+			c = (t_ull)n % base;
 		else
 			c = n % base;
 		if (c < 0)
@@ -70,7 +70,7 @@ static void	set_char_8b(char *p, long long n, int base, bool is_unsigned)
 			c += '0';
 		*p-- = c;
 		if (is_unsigned)
-			n /= (unsigned long long)base;
+			n /= (t_ull)base;
 		else
 			n /= base;
 	}

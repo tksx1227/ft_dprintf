@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 12:19:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:21:48 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct s_print
 	bool	minus_flag;
 	bool	zero_flag;
 }	t_print;
+
+typedef long long			t_ll;
+typedef unsigned long long	t_ull;
 
 int		ft_printf(const char *format, ...);
 
@@ -80,6 +83,6 @@ char	*add_prefix_with_free(char *s, char *prefix);
 char	*add_suffix_with_free(char *s, char *suffix);
 void	clear_info(t_print *info, void (*del)(void *));
 char	*ft_itoa_base_4b(int n, int base, bool is_unsigned);
-char	*ft_itoa_base_8b(long long n, int base, bool is_unsigned);
+char	*ft_itoa_base_8b(t_ll n, int base, bool is_unsigned);
 
 #endif

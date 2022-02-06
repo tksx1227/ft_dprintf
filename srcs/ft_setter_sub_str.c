@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/04 01:50:54 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 13:19:34 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ bool	ft_set_str(va_list *ap, t_print *info)
 
 bool	ft_set_ptr(va_list *ap, t_print *info)
 {
-	char				*s;
-	unsigned long long	n;
+	char	*s;
+	t_ull	n;
 
-	n = (unsigned long long)va_arg(*ap, void *);
+	n = (t_ull)va_arg(*ap, void *);
 	s = ft_itoa_base_8b(n, 16, true);
 	if (s == NULL)
 		return (false);

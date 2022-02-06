@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 12:05:25 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 12:03:42 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_parse_flag(char **fmt, t_print *info);
 static void	ft_parse_width(char **fmt, va_list *ap, t_print *info);
 static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info);
-static bool	ft_parse_spec(char **fmt, t_print *info);
+static void	ft_parse_spec(char **fmt, t_print *info);
 
 bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 {
@@ -23,12 +23,9 @@ bool	ft_parse(char **fmt, va_list *ap, t_print *info)
 
 	ft_parse_flag(fmt, info);
 	ft_parse_width(fmt, ap, info);
-	if (info->width == INVALID_NUM)
-		return (false);
 	ft_parse_precision(fmt, ap, info);
-	is_success = ft_parse_spec(fmt, info);
-	if (is_success)
-		is_success = ft_set_arg(ap, info);
+	ft_parse_spec(fmt, info);
+	is_success = ft_set_arg(ap, info);
 	return (is_success);
 }
 
@@ -62,10 +59,7 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 		width = (int)va_arg(*ap, int);
 		if (width < 0)
 		{
-			if (width == INT_MIN)
-				width = INVALID_NUM;
-			else
-				width *= -1;
+			width *= -1;
 			info->minus_flag = true;
 		}
 		*fmt += 1;
@@ -101,7 +95,7 @@ static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
 		info->prec = prec;
 }
 
-static bool	ft_parse_spec(char **fmt, t_print *info)
+static void	ft_parse_spec(char **fmt, t_print *info)
 {
 	char	spec;
 
@@ -111,7 +105,5 @@ static bool	ft_parse_spec(char **fmt, t_print *info)
 	{
 		info->spec = spec;
 		*fmt += 1;
-		return (true);
 	}
-	return (false);
 }

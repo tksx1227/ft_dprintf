@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 23:09:19 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:05:29 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:21:45 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool	ft_attach_width_zero_base(t_print *info, char c)
 	if (len < (size_t)info->width)
 	{
 		len = (size_t)info->width - len;
-		if (0 < len && (info->plus_flag || info->space_flag))
+		if (0 < len && info->plus_sign != 0)
 			len--;
 		s = (char *)ft_calloc(len + 1, sizeof(char));
 		if (s == NULL)

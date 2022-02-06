@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:02:27 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:17:34 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ void	clear_info(t_print *info, void (*del)(void *))
 	info->width = 0;
 	info->prec = -1;
 	info->spec = 0;
+	info->plus_sign = 0;
 	info->is_zero = false;
 	info->is_number = false;
 	info->is_null_char = false;
 	info->sharp_flag = false;
-	info->space_flag = false;
-	info->plus_flag = false;
 	info->left_align = false;
 	info->zero_flag = false;
 	if (del != NULL)

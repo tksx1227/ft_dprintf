@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 14:02:13 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 14:21:19 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ typedef struct s_print
 	int		prec;
 	char	spec;
 	char	*content;
+	char	plus_sign;
 	bool	is_zero;
 	bool	is_number;
 	bool	is_null_char;
 	bool	sharp_flag;
-	bool	space_flag;
-	bool	plus_flag;
 	bool	left_align;
 	bool	zero_flag;
 }	t_print;
@@ -62,8 +61,7 @@ bool	ft_set_uint(va_list *ap, t_print *info);
 // Attacher of flags
 bool	ft_attacher(t_print *info);
 bool	ft_attach_sharp_flag(t_print *info);
-bool	ft_attach_plus_flag(t_print *info);
-bool	ft_attach_space_flag(t_print *info);
+bool	ft_attach_plus_sign(t_print *info);
 bool	ft_attach_zero_flag(t_print *info);
 
 // Attacher of precision

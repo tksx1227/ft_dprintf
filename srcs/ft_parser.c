@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 12:03:42 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 12:19:41 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_print *info)
 	}
 	else
 	{
-		width = get_digit_part(fmt);
+		width = get_digits(fmt);
 	}
 	info->width = width;
 }
@@ -85,7 +85,7 @@ static void	ft_parse_precision(char **fmt, va_list *ap, t_print *info)
 	}
 	else if (ft_isdigit(**fmt))
 	{
-		prec = get_digit_part(fmt);
+		prec = get_digits(fmt);
 	}
 	else
 	{

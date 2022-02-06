@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/05 00:50:49 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/06 12:19:24 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	clear_info(t_print *info, void (*del)(void *))
 	info->content = NULL;
 }
 
-int	get_digit_part(char **fmt)
+int	get_digits(char **fmt)
 {
 	long long	ret;
 

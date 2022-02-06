@@ -14,10 +14,8 @@
 
 int	add_write_count(int current, int new)
 {
-	if (current < 0 || new < 0)
-		return (-1);
-	else if (INT_MAX - current < new)
-		return (-1);
+	if (current < 0 || new < 0 || INT_MAX - current < new)
+		return (INVALID_NUM);
 	return (current + new);
 }
 
@@ -46,7 +44,7 @@ int	get_digit_part(char **fmt)
 	ret = 0;
 	while (ft_isdigit(**fmt))
 	{
-		if (ret != -1)
+		if (ret != INVALID_NUM)
 		{
 			ret = ret * 10 + (**fmt - '0');
 			if ((long long)INT_MAX < ret)

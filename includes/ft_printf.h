@@ -65,22 +65,6 @@ t_status	ft_set_digit(va_list *ap, t_printf *info);
 t_status	ft_set_int(va_list *ap, t_printf *info);
 t_status	ft_set_uint(va_list *ap, t_printf *info);
 
-// Attacher of flags
-t_status	ft_attacher(t_printf *info);
-t_status	ft_attach_sharp_flag(t_printf *info);
-t_status	ft_attach_plus_sign(t_printf *info);
-t_status	ft_attach_zero_flag(t_printf *info);
-
-// Attacher of precision
-t_status	ft_attach_prec(t_printf *info);
-t_status	ft_attach_prec_ptr(t_printf *info);
-t_status	ft_attach_prec_str(t_printf *info);
-t_status	ft_attach_prec_hex(t_printf *info);
-t_status	ft_attach_prec_num(t_printf *info);
-
-// Attacher of width
-t_status	ft_attach_width(t_printf *info);
-
 // Utils
 int			get_digits(char **fmt);
 int			add_write_count(int current, int new);

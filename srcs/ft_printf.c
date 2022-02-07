@@ -27,7 +27,7 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%')
 		{
 			fmt++;
-			if (ft_parse((char **)&fmt, &ap, &info) && ft_attacher(&info))
+			if (ft_parse((char **)&fmt, &ap, &info))
 				wc = ft_putval(&info, ret);
 			else
 				wc = -1;

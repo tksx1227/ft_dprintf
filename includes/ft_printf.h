@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 15:05:32 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 00:55:09 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_printf
 {
 	int		width;
 	int		prec;
+	int		length;
 	char	spec;
 	char	*content;
 	char	plus_sign;

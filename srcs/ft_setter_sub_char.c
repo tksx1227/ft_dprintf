@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:30:30 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 15:08:57 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 00:57:48 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	ft_set_char(va_list *ap, t_printf *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->length = 1;
 	return (true);
 }
 
@@ -43,6 +44,7 @@ bool	ft_set_per(t_printf *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->length = 1;
 	return (true);
 }
 
@@ -79,5 +81,6 @@ static bool	ft_set_hex(va_list *ap, t_printf *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->length = ft_strlen(s);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 15:09:09 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 00:59:00 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 bool	ft_set_str(va_list *ap, t_printf *info)
 {
+	size_t	len;
 	char	*s;
 
 	s = (char *)va_arg(*ap, char *);
@@ -23,6 +24,11 @@ bool	ft_set_str(va_list *ap, t_printf *info)
 		s = ft_strdup(s);
 	if (s == NULL)
 		return (false);
+	len = ft_strlen(s);
+	if ((size_t)INT_MAX < len)
+		info->length = -1;
+	else
+		info->length = len;
 	info->content = s;
 	return (true);
 }
@@ -37,5 +43,6 @@ bool	ft_set_ptr(va_list *ap, t_printf *info)
 	if (s == NULL)
 		return (false);
 	info->content = s;
+	info->length = ft_strlen(s);
 	return (true);
 }

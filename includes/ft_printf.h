@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 01:59:06 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 02:54:49 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_printf
 	char	plus_sign;
 	bool	is_zero;
 	bool	is_number;
-	bool	is_null_char;
 	bool	sharp_flag;
 	bool	left_align;
 	bool	zero_flag;

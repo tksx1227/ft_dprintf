@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:38:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 00:59:00 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 02:12:03 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-bool	ft_set_str(va_list *ap, t_printf *info)
+t_status	ft_set_str(va_list *ap, t_printf *info)
 {
 	size_t	len;
 	char	*s;
@@ -23,17 +23,17 @@ bool	ft_set_str(va_list *ap, t_printf *info)
 	else
 		s = ft_strdup(s);
 	if (s == NULL)
-		return (false);
+		return (FAIL);
 	len = ft_strlen(s);
 	if ((size_t)INT_MAX < len)
 		info->length = -1;
 	else
 		info->length = len;
 	info->content = s;
-	return (true);
+	return (SUCCESS);
 }
 
-bool	ft_set_ptr(va_list *ap, t_printf *info)
+t_status	ft_set_ptr(va_list *ap, t_printf *info)
 {
 	char	*s;
 	t_ull	n;
@@ -41,8 +41,8 @@ bool	ft_set_ptr(va_list *ap, t_printf *info)
 	n = (t_ull)va_arg(*ap, void *);
 	s = ft_itoa_base_8bytes(n, 16, true);
 	if (s == NULL)
-		return (false);
+		return (FAIL);
 	info->content = s;
 	info->length = ft_strlen(s);
-	return (true);
+	return (SUCCESS);
 }

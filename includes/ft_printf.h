@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 01:27:20 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 02:29:00 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_status	ft_attach_ptr(t_printf *info);
 // Utils
 int			get_digits(char **fmt);
 int			add_write_count(int current, int new);
+void		ft_toupper_str(char *s);
 void		clear_info(t_printf *info, void (*del)(void *));
 char		*ft_itoa_base_4bytes(int n, int base, bool is_unsigned);
 char		*ft_itoa_base_8bytes(t_ll n, int base, bool is_unsigned);

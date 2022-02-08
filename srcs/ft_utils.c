@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 01:27:30 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 02:28:15 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,13 @@ int	get_digits(char **fmt)
 		*fmt += 1;
 	}
 	return ((int)ret);
+}
+
+void	ft_toupper_str(char *s)
+{
+	while (*s != '\0')
+	{
+		ft_touuper(*s);
+		s++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:29:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 00:45:46 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ t_status	ft_set_str(va_list *ap, t_printf *info);
 t_status	ft_set_ptr(va_list *ap, t_printf *info);
 t_status	ft_set_int(va_list *ap, t_printf *info);
 t_status	ft_set_uint(va_list *ap, t_printf *info);
+
+// Attacher
+t_status	ft_attach_num(t_printf *info);
+t_status	ft_attach_str(t_printf *info);
+t_status	ft_attach_hex(t_printf *info);
+t_status	ft_attach_ptr(t_printf *info);
 
 // Utils
 int			get_digits(char **fmt);

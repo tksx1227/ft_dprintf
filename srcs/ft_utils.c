@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 12:59:46 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 01:27:30 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,4 @@ int	get_digits(char **fmt)
 		*fmt += 1;
 	}
 	return ((int)ret);
-}
-
-char	*add_prefix_with_free(char *s, char *prefix)
-{
-	char	*new;
-
-	new = ft_strjoin(prefix, s);
-	free(s);
-	free(prefix);
-	if (new == NULL)
-		return (NULL);
-	return (new);
-}
-
-char	*add_suffix_with_free(char *s, char *suffix)
-{
-	char	*new;
-
-	new = ft_strjoin(s, suffix);
-	free(s);
-	free(suffix);
-	if (new == NULL)
-		return (NULL);
-	return (new);
 }

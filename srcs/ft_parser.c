@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 02:07:13 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 13:00:03 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ static void	ft_parse_flags(char **fmt, t_printf *info)
 		else if (c == '#')
 			info->sharp_flag = true;
 		else if (c == '+')
-			info->plus_sign = '+';
+			info->sign = '+';
 		else if (c == ' ')
 		{
-			if (info->plus_sign == 0)
-				info->plus_sign = ' ';
+			if (info->sign == 0)
+				info->sign = ' ';
 		}
 		else
 			break ;

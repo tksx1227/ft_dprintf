@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:46:47 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 01:45:21 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 03:08:39 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_status	ft_attach_ptr(t_printf *info)
 {
 	t_status	status;
 
+	status = SUCCESS;
 	if (info->length < info->prec)
 		status = ft_attach_ptr_prec(info);
 	if (status == SUCCESS)

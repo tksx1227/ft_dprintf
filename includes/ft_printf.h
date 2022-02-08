@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 02:34:49 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 02:59:13 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef enum e_status
 {
-	SUCCESS,
-	FAIL,
+	FAIL = 0,
+	SUCCESS = 1,
 }	t_status;
 
 typedef struct s_printf

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setter_core.c                                   :+:      :+:    :+:   */
+/*   ft_setter1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -34,4 +34,45 @@ t_status	ft_set_arg(va_list *ap, t_printf *info)
 	else if (spec == '%')
 		status = ft_set_per(info);
 	return (status);
+}
+
+t_status	ft_set_char(va_list *ap, t_printf *info)
+{
+	char	c;
+	char	*s;
+
+	c = (char)va_arg(*ap, int);
+	s = ft_strdup(" ");
+	if (s == NULL)
+		return (FAIL);
+	s[0] = c;
+	info->content = s;
+	info->length = 1;
+	return (SUCCESS);
+}
+
+t_status	ft_set_per(t_printf *info)
+{
+	char	*s;
+
+	s = ft_strdup("%");
+	if (s == NULL)
+		return (FAIL);
+	info->content = s;
+	info->length = 1;
+	return (SUCCESS);
+}
+
+t_status	ft_set_hex(va_list *ap, t_printf *info)
+{
+	unsigned int	n;
+	char			*s;
+
+	n = (unsigned int)va_arg(*ap, unsigned int);
+	s = ft_itoa_base_4bytes(n, 16, true);
+	if (s == NULL)
+		return (FAIL);
+	info->content = s;
+	info->length = ft_strlen(s);
+	return (SUCCESS);
 }

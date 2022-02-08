@@ -6,13 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 00:30:30 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 02:54:30 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 13:27:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static t_status	ft_set_hex(va_list *ap, t_printf *info);
 
 t_status	ft_set_char(va_list *ap, t_printf *info)
 {
@@ -41,30 +39,7 @@ t_status	ft_set_per(t_printf *info)
 	return (SUCCESS);
 }
 
-t_status	ft_set_hex_lower(va_list *ap, t_printf *info)
-{
-	return (ft_set_hex(ap, info));
-}
-
-t_status	ft_set_hex_upper(va_list *ap, t_printf *info)
-{
-	size_t		i;
-	t_status	status;
-
-	status = ft_set_hex(ap, info);
-	if (status == SUCCESS)
-	{
-		i = 0;
-		while (info->content[i] != '\0')
-		{
-			info->content[i] = ft_toupper(info->content[i]);
-			i++;
-		}
-	}
-	return (status);
-}
-
-static t_status	ft_set_hex(va_list *ap, t_printf *info)
+t_status	ft_set_hex(va_list *ap, t_printf *info)
 {
 	unsigned int	n;
 	char			*s;

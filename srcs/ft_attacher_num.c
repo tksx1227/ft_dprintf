@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 00:32:51 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 02:34:10 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_status	ft_attach_num_width(t_printf *info)
 		offset = 0;
 	else
 		offset = info->width - info->length;
-	ft_memmove(content + offset, info->content, content->length);
+	ft_memmove(content + offset, info->content, info->length);
 	free(info->content);
 	info->content = content;
 	info->length = info->width;

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 02:35:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 03:22:38 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_toupper_str(char *s)
 {
 	while (*s != '\0')
 	{
-		ft_toupper(*s);
+		*s = (char)ft_toupper(*s);
 		s++;
 	}
 }

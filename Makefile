@@ -1,5 +1,6 @@
 SRCDIR	:= ./srcs/
 SRCS	:= ft_attacher.c \
+		   ft_attacher_hex.c \
 		   ft_attacher_num.c \
 		   ft_attacher_ptr.c \
 		   ft_attacher_str.c \

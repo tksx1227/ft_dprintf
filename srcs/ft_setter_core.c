@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:01:17 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:26:41 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 13:30:05 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ t_status	ft_set_arg(va_list *ap, t_printf *info)
 		status = ft_set_str(ap, info);
 	else if (spec == 'p')
 		status = ft_set_ptr(ap, info);
-	else if (spec == 'd')
-		status = ft_set_digit(ap, info);
-	else if (spec == 'i')
+	else if (spec == 'i' || spec == 'd')
 		status = ft_set_int(ap, info);
 	else if (spec == 'u')
 		status = ft_set_uint(ap, info);

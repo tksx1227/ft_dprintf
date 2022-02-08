@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:27:39 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 13:29:36 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_status	ft_set_per(t_printf *info);
 t_status	ft_set_hex(va_list *ap, t_printf *info);
 t_status	ft_set_str(va_list *ap, t_printf *info);
 t_status	ft_set_ptr(va_list *ap, t_printf *info);
-t_status	ft_set_digit(va_list *ap, t_printf *info);
 t_status	ft_set_int(va_list *ap, t_printf *info);
 t_status	ft_set_uint(va_list *ap, t_printf *info);
 

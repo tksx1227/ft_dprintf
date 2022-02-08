@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:47:24 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 02:33:18 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 00:33:27 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ static t_status	ft_attach_str_width(t_printf *info);
 
 t_status	ft_attach_str(t_printf *info)
 {
-	int			len;
-	char		*tmp;
 	t_status	status;
 
+	status = SUCCESS;
 	if (info->prec < info->length)
 		status = ft_attach_str_prec(info);
 	if (status == SUCCESS && info->length < info->width)

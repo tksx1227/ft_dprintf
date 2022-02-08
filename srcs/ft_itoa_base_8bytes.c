@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 16:46:25 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:25:28 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:56:37 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,18 @@ static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned)
 
 static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned)
 {
+	int		sign;
 	char	c;
 
+	sign = 1;
+	if (n < 0)
+		sign = -1;
 	while (n != 0)
 	{
 		if (is_unsigned)
 			c = (t_ull)n % base;
 		else
-			c = n % base;
-		if (c < 0)
-			c *= -1;
+			c = sign * (n % base);
 		if (10 <= c)
 			c += 'a' - 10;
 		else

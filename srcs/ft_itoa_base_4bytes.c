@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:23:10 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 13:24:52 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:55:43 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,18 @@ static int	count_digit_base_4bytes(int n, int base, bool is_unsigned)
 
 static void	set_char_4bytes(char *p, int n, int base, bool is_unsigned)
 {
+	int		sign;
 	char	c;
 
+	sign = 1;
+	if (n < 0)
+		sign = -1;
 	while (n != 0)
 	{
 		if (is_unsigned)
 			c = (unsigned int)n % base;
 		else
-			c = n % base;
-		if (c < 0)
-			c *= -1;
+			c = sign * (n % base);
 		if (10 <= c)
 			c += 'a' - 10;
 		else

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 02:14:35 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 15:09:42 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/09 02:35:14 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	clear_info(t_printf *info, void (*del)(void *))
 {
 	info->width = 0;
 	info->prec = -1;
+	info->length = 0;
 	info->spec = 0;
-	info->plus_sign = 0;
+	info->sign = 0;
 	info->is_zero = false;
 	info->is_number = false;
-	info->is_null_char = false;
 	info->sharp_flag = false;
 	info->left_align = false;
 	info->zero_flag = false;
@@ -54,26 +54,11 @@ int	get_digits(char **fmt)
 	return ((int)ret);
 }
 
-char	*add_prefix_with_free(char *s, char *prefix)
+void	ft_toupper_str(char *s)
 {
-	char	*new;
-
-	new = ft_strjoin(prefix, s);
-	free(s);
-	free(prefix);
-	if (new == NULL)
-		return (NULL);
-	return (new);
-}
-
-char	*add_suffix_with_free(char *s, char *suffix)
-{
-	char	*new;
-
-	new = ft_strjoin(s, suffix);
-	free(s);
-	free(suffix);
-	if (new == NULL)
-		return (NULL);
-	return (new);
+	while (*s != '\0')
+	{
+		ft_toupper(*s);
+		s++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/06 15:08:11 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/08 13:00:03 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_printf *info);
 static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info);
 static void	ft_parse_spec(char **fmt, t_printf *info);
 
-bool	ft_parse(char **fmt, va_list *ap, t_printf *info)
+t_status	ft_parse(char **fmt, va_list *ap, t_printf *info)
 {
-	bool	is_success;
+	t_status	status;
 
 	ft_parse_flags(fmt, info);
 	ft_parse_width(fmt, ap, info);
 	ft_parse_precision(fmt, ap, info);
 	ft_parse_spec(fmt, info);
-	is_success = ft_set_arg(ap, info);
-	return (is_success);
+	status = ft_set_arg(ap, info);
+	return (status);
 }
 
 static void	ft_parse_flags(char **fmt, t_printf *info)
@@ -43,11 +43,11 @@ static void	ft_parse_flags(char **fmt, t_printf *info)
 		else if (c == '#')
 			info->sharp_flag = true;
 		else if (c == '+')
-			info->plus_sign = '+';
+			info->sign = '+';
 		else if (c == ' ')
 		{
-			if (info->plus_sign == 0)
-				info->plus_sign = ' ';
+			if (info->sign == 0)
+				info->sign = ' ';
 		}
 		else
 			break ;

@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 01:50:49 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 02:30:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 00:42:34 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_status	ft_attach_hex(t_printf *info)
 		status = ft_attach_hex_prec(info);
 	if (status == SUCCESS)
 	{
-		if (info->sharp_flag)
+		if (info->sharp_flag && !info->is_zero)
 		{
 			if (info->length < info->width - 2)
 				status = ft_attach_hex_width_with_prefix(info);

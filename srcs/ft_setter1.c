@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:01:17 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:30:05 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 00:43:11 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_status	ft_set_hex(va_list *ap, t_printf *info)
 	char			*s;
 
 	n = (unsigned int)va_arg(*ap, unsigned int);
+	if (n == 0)
+		info->is_zero = true;
 	s = ft_itoa_base_4bytes(n, 16, true);
 	if (s == NULL)
 		return (FAIL);

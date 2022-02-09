@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 02:59:09 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 03:22:02 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_status	ft_attach_str(t_printf *info);
 t_status	ft_attach_hex(t_printf *info);
 t_status	ft_attach_ptr(t_printf *info);
 t_status	ft_attach_prefix(t_printf *info, char *prefix);
+t_status	ft_attach_num_prec(t_printf *info);
 
 // Utils
 int			get_digits(char **fmt);

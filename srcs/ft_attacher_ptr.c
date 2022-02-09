@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:46:47 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 03:03:44 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 03:23:25 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ t_status	ft_attach_ptr(t_printf *info)
 			status = ft_attach_prefix(info, "0x");
 	}
 	return (status);
-}
-
-static t_status	ft_attach_ptr_prec(t_printf *info)
-{
-	size_t	offset;
-	char	*content;
-
-	content = (char *)ft_calloc((size_t)info->spec + 1, sizeof(char));
-	if (content == NULL)
-		return (FAIL);
-	ft_memset(content, '0', info->prec);
-	offset = info->prec - info->length;
-	ft_memmove(content + offset, info->content, info->length);
-	free(info->content);
-	info->content = content;
-	info->length = info->prec;
-	return (SUCCESS);
 }
 
 static t_status	ft_attach_ptr_width_with_prefix(t_printf *info)

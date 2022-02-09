@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:47:24 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 02:54:23 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 00:26:23 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static t_status	ft_attach_str_width(t_printf *info)
 		return (FAIL);
 	ft_memset(content, ' ', info->width);
 	if (info->left_align)
-		offset = info->width - info->length;
-	else
 		offset = 0;
+	else
+		offset = info->width - info->length;
 	ft_memmove(content + offset, info->content, info->length);
 	free(info->content);
 	info->content = content;

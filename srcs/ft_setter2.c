@@ -35,10 +35,10 @@ t_status	ft_set_str(va_list *ap, t_printf *info)
 
 t_status	ft_set_ptr(va_list *ap, t_printf *info)
 {
-	char	*s;
-	t_ull	n;
+	char				*s;
+	unsigned long long	n;
 
-	n = (t_ull)va_arg(*ap, void *);
+	n = (unsigned long long)va_arg(*ap, void *);
 	s = ft_itoa_base_8bytes(n, 16, true);
 	if (s == NULL)
 		return (FAIL);
@@ -49,8 +49,8 @@ t_status	ft_set_ptr(va_list *ap, t_printf *info)
 
 t_status	ft_set_int(va_list *ap, t_printf *info)
 {
-	t_ll	n;
-	char	*s;
+	char		*s;
+	long long	n;
 
 	n = (int)va_arg(*ap, int);
 	if (n == 0)

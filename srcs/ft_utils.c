@@ -38,7 +38,7 @@ void	clear_info(t_printf *info, void (*del)(void *))
 
 int	get_digits(char **fmt)
 {
-	t_ll	ret;
+	long long	ret;
 
 	ret = 0;
 	while (ft_isdigit(**fmt))
@@ -46,7 +46,7 @@ int	get_digits(char **fmt)
 		if (ret != INVALID_NUM)
 		{
 			ret = ret * 10 + (**fmt - '0');
-			if ((t_ll)INT_MAX < ret)
+			if ((long long)INT_MAX < ret)
 				ret = INVALID_NUM;
 		}
 		*fmt += 1;

@@ -40,9 +40,6 @@ typedef struct s_printf
 	bool	zero_flag;
 }	t_printf;
 
-typedef long long			t_ll;
-typedef unsigned long long	t_ull;
-
 int			ft_printf(const char *format, ...);
 
 // Write functions
@@ -75,6 +72,6 @@ int			add_write_count(int current, int new);
 void		ft_toupper_str(char *s);
 void		clear_info(t_printf *info, void (*del)(void *));
 char		*ft_itoa_base_4bytes(int n, int base, bool is_unsigned);
-char		*ft_itoa_base_8bytes(t_ll n, int base, bool is_unsigned);
+char		*ft_itoa_base_8bytes(long long n, int base, bool is_unsigned);
 
 #endif

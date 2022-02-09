@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned);
-static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned);
+static int	count_digit_base_8bytes(long long n, int base, bool is_unsigned);
+static void	set_char_8bytes(char *p, long long n, int base, bool is_unsigned);
 
-char	*ft_itoa_base_8bytes(t_ll n, int base, bool is_unsigned)
+char	*ft_itoa_base_8bytes(long long n, int base, bool is_unsigned)
 {
 	int		dc;
 	char	*p;
@@ -32,7 +32,7 @@ char	*ft_itoa_base_8bytes(t_ll n, int base, bool is_unsigned)
 	return (p);
 }
 
-static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned)
+static int	count_digit_base_8bytes(long long n, int base, bool is_unsigned)
 {
 	int	counter;
 
@@ -45,14 +45,14 @@ static int	count_digit_base_8bytes(t_ll n, int base, bool is_unsigned)
 	{
 		counter++;
 		if (is_unsigned)
-			n /= (t_ull)base;
+			n /= (unsigned long long)base;
 		else
 			n /= base;
 	}
 	return (counter);
 }
 
-static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned)
+static void	set_char_8bytes(char *p, long long n, int base, bool is_unsigned)
 {
 	int		sign;
 	char	c;
@@ -63,7 +63,7 @@ static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned)
 	while (n != 0)
 	{
 		if (is_unsigned)
-			c = (t_ull)n % base;
+			c = (unsigned long long)n % base;
 		else
 			c = sign * (n % base);
 		if (10 <= c)
@@ -72,7 +72,7 @@ static void	set_char_8bytes(char *p, t_ll n, int base, bool is_unsigned)
 			c += '0';
 		*p-- = c;
 		if (is_unsigned)
-			n /= (t_ull)base;
+			n /= (unsigned long long)base;
 		else
 			n /= base;
 	}

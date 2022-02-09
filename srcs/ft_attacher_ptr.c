@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-static t_status	ft_attach_ptr_prec(t_printf *info);
 static t_status	ft_attach_ptr_width_with_prefix(t_printf *info);
 
 t_status	ft_attach_ptr(t_printf *info)
@@ -21,7 +20,7 @@ t_status	ft_attach_ptr(t_printf *info)
 
 	status = SUCCESS;
 	if (info->length < info->prec)
-		status = ft_attach_ptr_prec(info);
+		status = ft_attach_num_prec(info);
 	if (status == SUCCESS)
 	{
 		if (info->length < info->width - 2)

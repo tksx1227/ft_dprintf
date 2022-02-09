@@ -4,6 +4,7 @@ SRCS	:= ft_attacher.c \
 		   ft_attacher_num.c \
 		   ft_attacher_ptr.c \
 		   ft_attacher_str.c \
+		   ft_attacher_utils.c \
 		   ft_itoa_base_4bytes.c \
 		   ft_itoa_base_8bytes.c \
 		   ft_parser.c \

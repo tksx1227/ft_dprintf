@@ -21,7 +21,7 @@ t_status	ft_attach_hex(t_printf *info)
 
 	status = SUCCESS;
 	if (info->length < info->prec)
-		status = ft_attach_hex_prec(info);
+		status = ft_attach_num_prec(info);
 	if (status == SUCCESS)
 	{
 		if (info->sharp_flag && !info->is_zero)

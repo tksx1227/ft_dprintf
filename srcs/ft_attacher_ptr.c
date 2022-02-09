@@ -6,14 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 00:46:47 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 03:08:39 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 03:03:44 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static t_status	ft_attach_ptr_prec(t_printf *info);
-static t_status	ft_attach_ptr_prefix(t_printf *info);
 static t_status	ft_attach_ptr_width_with_prefix(t_printf *info);
 
 t_status	ft_attach_ptr(t_printf *info)
@@ -28,7 +27,7 @@ t_status	ft_attach_ptr(t_printf *info)
 		if (info->length < info->width - 2)
 			status = ft_attach_ptr_width_with_prefix(info);
 		else
-			status = ft_attach_ptr_prefix(info);
+			status = ft_attach_prefix(info, "0x");
 	}
 	return (status);
 }
@@ -47,19 +46,6 @@ static t_status	ft_attach_ptr_prec(t_printf *info)
 	free(info->content);
 	info->content = content;
 	info->length = info->prec;
-	return (SUCCESS);
-}
-
-static t_status	ft_attach_ptr_prefix(t_printf *info)
-{
-	char	*temp;
-
-	temp = info->content;
-	info->content = ft_strjoin("0x", info->content);
-	free(temp);
-	if (info->content == NULL)
-		return (FAIL);
-	info->length += 2;
 	return (SUCCESS);
 }
 

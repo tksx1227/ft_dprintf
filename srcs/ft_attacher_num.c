@@ -6,19 +6,19 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/09 23:55:56 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 03:01:51 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static t_status	ft_attach_num_prec(t_printf *info);
-static t_status	ft_attach_num_sign(t_printf *info);
 static t_status	ft_attach_num_width(t_printf *info);
 static t_status	ft_attach_num_width_with_sign(t_printf *info);
 
 t_status	ft_attach_num(t_printf *info)
 {
+	char		prefix[2];
 	t_status	status;
 
 	status = SUCCESS;
@@ -28,10 +28,12 @@ t_status	ft_attach_num(t_printf *info)
 	{
 		if (info->sign != 0)
 		{
+			prefix[0] = info->sign;
+			prefix[1] = '\0';
 			if (info->length < info->width - 1)
 				status = ft_attach_num_width_with_sign(info);
 			else
-				status = ft_attach_num_sign(info);
+				status = ft_attach_prefix(info, prefix);
 		}
 		else
 		{
@@ -40,22 +42,6 @@ t_status	ft_attach_num(t_printf *info)
 		}
 	}
 	return (status);
-}
-
-static t_status	ft_attach_num_sign(t_printf *info)
-{
-	char	*temp;
-	char	sign[2];
-
-	sign[0] = info->sign;
-	sign[1] = '\0';
-	temp = info->content;
-	info->content = ft_strjoin(sign, info->content);
-	free(temp);
-	if (info->content == NULL)
-		return (FAIL);
-	info->length += 1;
-	return (SUCCESS);
 }
 
 static t_status	ft_attach_num_width(t_printf *info)

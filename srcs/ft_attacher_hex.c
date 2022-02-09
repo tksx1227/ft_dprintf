@@ -6,14 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 01:50:49 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 01:10:57 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 03:03:12 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static t_status	ft_attach_hex_prec(t_printf *info);
-static t_status	ft_attach_hex_prefix(t_printf *info);
 static t_status	ft_attach_hex_width(t_printf *info);
 static t_status	ft_attach_hex_width_with_prefix(t_printf *info);
 
@@ -31,7 +30,7 @@ t_status	ft_attach_hex(t_printf *info)
 			if (info->length < info->width - 2)
 				status = ft_attach_hex_width_with_prefix(info);
 			else
-				status = ft_attach_hex_prefix(info);
+				status = ft_attach_prefix(info, "0x");
 		}
 		else
 		{
@@ -58,19 +57,6 @@ static t_status	ft_attach_hex_prec(t_printf *info)
 	free(info->content);
 	info->content = content;
 	info->length = info->prec;
-	return (SUCCESS);
-}
-
-static t_status	ft_attach_hex_prefix(t_printf *info)
-{
-	char	*temp;
-
-	temp = info->content;
-	info->content = ft_strjoin("0x", info->content);
-	free(temp);
-	if (info->content == NULL)
-		return (FAIL);
-	info->length += 2;
 	return (SUCCESS);
 }
 

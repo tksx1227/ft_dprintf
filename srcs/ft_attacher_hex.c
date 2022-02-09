@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 01:50:49 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 00:42:34 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 01:10:57 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ static t_status	ft_attach_hex_width(t_printf *info)
 	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
 	if (content == NULL)
 		return (FAIL);
-	ft_memset(content, ' ', info->width);
+	if (info->zero_flag && info->prec == -1 && !info->left_align)
+		ft_memset(content, '0', info->width);
+	else
+		ft_memset(content, ' ', info->width);
 	if (info->left_align)
 		offset = 0;
 	else

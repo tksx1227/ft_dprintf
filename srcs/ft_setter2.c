@@ -82,6 +82,7 @@ t_status	ft_set_uint(va_list *ap, t_printf *info)
 		return (FAIL);
 	info->content = s;
 	info->is_number = true;
+	info->is_unsigned = true;
 	info->length = ft_strlen(s);
 	return (SUCCESS);
 }

@@ -25,7 +25,7 @@ t_status	ft_attach_num(t_printf *info)
 		status = ft_attach_num_prec(info);
 	if (status == SUCCESS)
 	{
-		if (info->sign != 0)
+		if (info->sign != 0 && !info->is_unsigned)
 		{
 			prefix[0] = info->sign;
 			prefix[1] = '\0';

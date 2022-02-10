@@ -35,6 +35,7 @@ typedef struct s_printf
 	char	sign;
 	bool	is_zero;
 	bool	is_number;
+	bool	is_unsigned;
 	bool	sharp_flag;
 	bool	left_align;
 	bool	zero_flag;

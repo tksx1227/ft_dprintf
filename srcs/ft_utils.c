@@ -28,6 +28,7 @@ void	clear_info(t_printf *info, void (*del)(void *))
 	info->sign = 0;
 	info->is_zero = false;
 	info->is_number = false;
+	info->is_unsigned = false;
 	info->sharp_flag = false;
 	info->left_align = false;
 	info->zero_flag = false;

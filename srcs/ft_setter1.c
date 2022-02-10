@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:01:17 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 00:43:11 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_status	ft_set_arg(va_list *ap, t_printf *info)
 	t_status	status;
 
 	spec = info->spec;
-	status = FAIL;
 	if (spec == 'c')
 		status = ft_set_char(ap, info);
 	else if (spec == 's')
@@ -31,8 +30,8 @@ t_status	ft_set_arg(va_list *ap, t_printf *info)
 		status = ft_set_uint(ap, info);
 	else if (spec == 'x' || spec == 'X')
 		status = ft_set_hex(ap, info);
-	else if (spec == '%')
-		status = ft_set_per(info);
+	else
+		status = ft_set_const_char(info, spec);
 	return (status);
 }
 
@@ -51,13 +50,14 @@ t_status	ft_set_char(va_list *ap, t_printf *info)
 	return (SUCCESS);
 }
 
-t_status	ft_set_per(t_printf *info)
+t_status	ft_set_const_char(t_printf *info, char c)
 {
 	char	*s;
 
-	s = ft_strdup("%");
+	s = ft_strdup(" ");
 	if (s == NULL)
 		return (FAIL);
+	s[0] = c;
 	info->content = s;
 	info->length = 1;
 	return (SUCCESS);

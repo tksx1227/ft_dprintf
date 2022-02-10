@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:38:34 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:38:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:56:14 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_status	ft_set_ptr(va_list *ap, t_printf *info)
 	unsigned long long	n;
 
 	n = (unsigned long long)va_arg(*ap, void *);
+	if (n == 0)
+		info->is_zero = true;
 	s = ft_itoa_base_8bytes(n, 16, true);
 	if (s == NULL)
 		return (FAIL);

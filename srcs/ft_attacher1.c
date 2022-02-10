@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:47:24 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 00:26:23 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:03:11 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_status	ft_attach(t_printf *info)
 	char		spec;
 	t_status	status;
 
-	status = FAIL;
 	spec = info->spec;
 	if (spec == 's' || spec == 'c' || spec == '%')
 		status = ft_attach_str(info);
@@ -30,6 +29,8 @@ t_status	ft_attach(t_printf *info)
 		status = ft_attach_hex(info);
 	else if (spec == 'p')
 		status = ft_attach_ptr(info);
+	else
+		status = ft_attach_str(info);
 	return (status);
 }
 
@@ -38,8 +39,9 @@ t_status	ft_attach_str(t_printf *info)
 	t_status	status;
 
 	status = SUCCESS;
-	if (0 <= info->prec && info->prec < info->length)
-		status = ft_attach_str_prec(info);
+	if (info->spec == 's' && \
+			info->prec != INIT_PREC && info->prec < info->length)
+			status = ft_attach_str_prec(info);
 	if (status == SUCCESS && info->length < info->width)
 		status = ft_attach_str_width(info);
 	return (status);
@@ -49,12 +51,12 @@ static t_status	ft_attach_str_prec(t_printf *info)
 {
 	char	*tmp;
 
-	info->length = info->prec;
 	tmp = info->content;
-	info->content = ft_substr(info->content, 0, info->length);
+	info->content = ft_substr(info->content, 0, info->prec);
 	free(tmp);
 	if (info->content == NULL)
 		return (FAIL);
+	info->length = info->prec;
 	return (SUCCESS);
 }
 

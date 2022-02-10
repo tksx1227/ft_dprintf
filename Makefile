@@ -7,9 +7,7 @@ SRCS	:= ft_printf.c \
 		   ft_attacher2.c \
 		   ft_attacher_common.c \
 		   ft_itoa_base_4bytes.c \
-		   ft_itoa_base_8bytes.c \
-		   ft_putval.c \
-		   ft_utils.c
+		   ft_itoa_base_8bytes.c
 SRCS	:= $(addprefix $(SRCDIR), $(SRCS))
 OBJS	:= $(SRCS:.c=.o)
 CC		:= cc

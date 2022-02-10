@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 03:22:02 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../libft/includes/libft.h"
 
 # define INVALID_NUM -1
+# define INIT_PREC -1
 
 typedef enum e_status
 {
@@ -34,7 +35,6 @@ typedef struct s_printf
 	char	*content;
 	char	sign;
 	bool	is_zero;
-	bool	is_number;
 	bool	is_unsigned;
 	bool	sharp_flag;
 	bool	left_align;
@@ -43,17 +43,13 @@ typedef struct s_printf
 
 int			ft_printf(const char *format, ...);
 
-// Write functions
-int			ft_put2per(char **s);
-int			ft_putval(t_printf *info, int wc);
-
 // Parser
 t_status	ft_parse(char **fmt, va_list *ap, t_printf *info);
 
-// Setters
+// Setter
 t_status	ft_set_arg(va_list *ap, t_printf *info);
 t_status	ft_set_char(va_list *ap, t_printf *info);
-t_status	ft_set_per(t_printf *info);
+t_status	ft_set_const_char(t_printf *info, char c);
 t_status	ft_set_hex(va_list *ap, t_printf *info);
 t_status	ft_set_str(va_list *ap, t_printf *info);
 t_status	ft_set_ptr(va_list *ap, t_printf *info);
@@ -66,16 +62,12 @@ t_status	ft_attach_num(t_printf *info);
 t_status	ft_attach_str(t_printf *info);
 t_status	ft_attach_hex(t_printf *info);
 t_status	ft_attach_ptr(t_printf *info);
-t_status	ft_attch_prefix_common(t_printf *info, char *prefix);
+t_status	ft_attach_prefix_common(t_printf *info, char *prefix);
 t_status	ft_attach_prec_common(t_printf *info);
 t_status	ft_attach_width_common(t_printf *info);
 t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix);
 
 // Utils
-int			get_digits(char **fmt);
-int			add_write_count(int current, int new);
-void		ft_toupper_str(char *s);
-void		clear_info(t_printf *info, void (*del)(void *));
 char		*ft_itoa_base_4bytes(int n, int base, bool is_unsigned);
 char		*ft_itoa_base_8bytes(long long n, int base, bool is_unsigned);
 

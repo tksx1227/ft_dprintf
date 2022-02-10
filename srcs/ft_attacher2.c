@@ -6,11 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 03:20:53 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_toupper_str(char *s);
 
 t_status	ft_attach_num(t_printf *info)
 {
@@ -29,7 +31,7 @@ t_status	ft_attach_num(t_printf *info)
 			if (info->length < info->width - 1)
 				status = ft_attach_width_with_prefix_common(info, prefix);
 			else
-				status = ft_attch_prefix_common(info, prefix);
+				status = ft_attach_prefix_common(info, prefix);
 		}
 		else
 		{
@@ -52,7 +54,7 @@ t_status	ft_attach_ptr(t_printf *info)
 		if (info->length < info->width - 2)
 			status = ft_attach_width_with_prefix_common(info, "0x");
 		else
-			status = ft_attch_prefix_common(info, "0x");
+			status = ft_attach_prefix_common(info, "0x");
 	}
 	return (status);
 }
@@ -71,7 +73,7 @@ t_status	ft_attach_hex(t_printf *info)
 			if (info->length < info->width - 2)
 				status = ft_attach_width_with_prefix_common(info, "0x");
 			else
-				status = ft_attch_prefix_common(info, "0x");
+				status = ft_attach_prefix_common(info, "0x");
 		}
 		else
 		{
@@ -82,4 +84,16 @@ t_status	ft_attach_hex(t_printf *info)
 	if (status == SUCCESS && info->spec == 'X')
 		ft_toupper_str(info->content);
 	return (status);
+}
+
+static void	ft_toupper_str(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		s[i] = (char)ft_toupper(s[i]);
+		i++;
+	}
 }

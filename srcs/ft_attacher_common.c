@@ -6,13 +6,13 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 02:57:23 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/10 03:21:46 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_status	ft_attch_prefix_common(t_printf *info, char *prefix)
+t_status	ft_attach_prefix_common(t_printf *info, char *prefix)
 {
 	char	*temp;
 
@@ -57,7 +57,7 @@ t_status	ft_attach_width_common(t_printf *info)
 	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
 	if (content == NULL)
 		return (FAIL);
-	if (info->zero_flag && info->prec == -1 && !info->left_align)
+	if (info->zero_flag && info->prec == INIT_PREC && !info->left_align)
 		ft_memset(content, '0', info->width);
 	else
 		ft_memset(content, ' ', info->width);
@@ -81,7 +81,7 @@ t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix)
 	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
 	if (content == NULL)
 		return (FAIL);
-	if (info->zero_flag && info->prec == -1 && !info->left_align)
+	if (info->zero_flag && info->prec == INIT_PREC && !info->left_align)
 		ft_memset(content, '0', info->width);
 	else
 		ft_memset(content, ' ', info->width);
@@ -90,7 +90,7 @@ t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix)
 		offset = prefix_len;
 	else
 		offset = info->width - info->length;
-	if (info->zero_flag && info->prec == -1)
+	if (info->zero_flag && info->prec == INIT_PREC)
 		ft_memmove(content, prefix, prefix_len);
 	else
 		ft_memmove(content + offset - prefix_len, prefix, prefix_len);

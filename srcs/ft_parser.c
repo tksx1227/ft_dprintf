@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 13:00:03 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_parse_flags(char **fmt, t_printf *info);
 static void	ft_parse_width(char **fmt, va_list *ap, t_printf *info);
-static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info);
-static void	ft_parse_spec(char **fmt, t_printf *info);
+static void	ft_parse_prec(char **fmt, va_list *ap, t_printf *info);
+static int	ft_get_digits(char **fmt);
 
 t_status	ft_parse(char **fmt, va_list *ap, t_printf *info)
 {
@@ -23,8 +23,11 @@ t_status	ft_parse(char **fmt, va_list *ap, t_printf *info)
 
 	ft_parse_flags(fmt, info);
 	ft_parse_width(fmt, ap, info);
-	ft_parse_precision(fmt, ap, info);
-	ft_parse_spec(fmt, info);
+	if (info->width < 0)
+		return (FAIL);
+	ft_parse_prec(fmt, ap, info);
+	info->spec = **fmt;
+	*fmt += 1;
 	status = ft_set_arg(ap, info);
 	return (status);
 }
@@ -71,12 +74,12 @@ static void	ft_parse_width(char **fmt, va_list *ap, t_printf *info)
 	}
 	else
 	{
-		width = get_digits(fmt);
+		width = ft_get_digits(fmt);
 	}
 	info->width = width;
 }
 
-static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info)
+static void	ft_parse_prec(char **fmt, va_list *ap, t_printf *info)
 {
 	int	prec;
 
@@ -90,7 +93,7 @@ static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info)
 	}
 	else if (ft_isdigit(**fmt))
 	{
-		prec = get_digits(fmt);
+		prec = ft_get_digits(fmt);
 	}
 	else
 	{
@@ -100,15 +103,20 @@ static void	ft_parse_precision(char **fmt, va_list *ap, t_printf *info)
 		info->prec = prec;
 }
 
-static void	ft_parse_spec(char **fmt, t_printf *info)
+static int	ft_get_digits(char **fmt)
 {
-	char	spec;
+	long long	ret;
 
-	spec = **fmt;
-	if (spec == 'c' || spec == 's' || spec == 'p' || spec == 'd' || spec == 'i' \
-			|| spec == 'u' || spec == 'x' || spec == 'X' || spec == '%')
+	ret = 0;
+	while (ft_isdigit(**fmt))
 	{
-		info->spec = spec;
+		if (ret != INVALID_NUM)
+		{
+			ret = ret * 10 + (**fmt - '0');
+			if ((long long)INT_MAX < ret)
+				ret = INVALID_NUM;
+		}
 		*fmt += 1;
 	}
+	return ((int)ret);
 }

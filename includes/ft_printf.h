@@ -66,10 +66,10 @@ t_status	ft_attach_num(t_printf *info);
 t_status	ft_attach_str(t_printf *info);
 t_status	ft_attach_hex(t_printf *info);
 t_status	ft_attach_ptr(t_printf *info);
-t_status	ft_attach_prefix(t_printf *info, char *prefix);
-t_status	ft_attach_num_prec(t_printf *info);
-t_status	ft_attach_num_width(t_printf *info);
-t_status	ft_attach_num_width_with_prefix(t_printf *info, char *prefix);
+t_status	ft_attch_prefix_common(t_printf *info, char *prefix);
+t_status	ft_attach_prec_common(t_printf *info);
+t_status	ft_attach_width_common(t_printf *info);
+t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix);
 
 // Utils
 int			get_digits(char **fmt);

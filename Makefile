@@ -1,17 +1,14 @@
 SRCDIR	:= ./srcs/
-SRCS	:= ft_attacher.c \
-		   ft_attacher_hex.c \
-		   ft_attacher_num.c \
-		   ft_attacher_ptr.c \
-		   ft_attacher_str.c \
-		   ft_attacher_utils.c \
-		   ft_itoa_base_4bytes.c \
-		   ft_itoa_base_8bytes.c \
+SRCS	:= ft_printf.c \
 		   ft_parser.c \
-		   ft_printf.c \
-		   ft_putval.c \
 		   ft_setter1.c \
 		   ft_setter2.c \
+		   ft_attacher1.c \
+		   ft_attacher2.c \
+		   ft_attacher_common.c \
+		   ft_itoa_base_4bytes.c \
+		   ft_itoa_base_8bytes.c \
+		   ft_putval.c \
 		   ft_utils.c
 SRCS	:= $(addprefix $(SRCDIR), $(SRCS))
 OBJS	:= $(SRCS:.c=.o)

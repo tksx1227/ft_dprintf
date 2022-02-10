@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attacher_utils.c                                :+:      :+:    :+:   */
+/*   ft_attacher_common.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-t_status	ft_attach_prefix(t_printf *info, char *prefix)
+t_status	ft_attch_prefix_common(t_printf *info, char *prefix)
 {
 	char	*temp;
 
@@ -25,7 +25,7 @@ t_status	ft_attach_prefix(t_printf *info, char *prefix)
 	return (SUCCESS);
 }
 
-t_status	ft_attach_num_prec(t_printf *info)
+t_status	ft_attach_prec_common(t_printf *info)
 {
 	size_t	offset;
 	char	*content;
@@ -49,7 +49,7 @@ t_status	ft_attach_num_prec(t_printf *info)
 	return (SUCCESS);
 }
 
-t_status	ft_attach_num_width(t_printf *info)
+t_status	ft_attach_width_common(t_printf *info)
 {
 	size_t	offset;
 	char	*content;
@@ -72,7 +72,7 @@ t_status	ft_attach_num_width(t_printf *info)
 	return (SUCCESS);
 }
 
-t_status	ft_attach_num_width_with_prefix(t_printf *info, char *prefix)
+t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix)
 {
 	size_t	offset;
 	size_t	prefix_len;

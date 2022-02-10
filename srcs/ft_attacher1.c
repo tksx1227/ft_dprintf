@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attacher_str.c                                  :+:      :+:    :+:   */
+/*   ft_attacher1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,6 +14,24 @@
 
 static t_status	ft_attach_str_prec(t_printf *info);
 static t_status	ft_attach_str_width(t_printf *info);
+
+t_status	ft_attach(t_printf *info)
+{
+	char		spec;
+	t_status	status;
+
+	status = FAIL;
+	spec = info->spec;
+	if (spec == 's' || spec == 'c' || spec == '%')
+		status = ft_attach_str(info);
+	else if (spec == 'd' || spec == 'i' || spec == 'u')
+		status = ft_attach_num(info);
+	else if (spec == 'x' || spec == 'X')
+		status = ft_attach_hex(info);
+	else if (spec == 'p')
+		status = ft_attach_ptr(info);
+	return (status);
+}
 
 t_status	ft_attach_str(t_printf *info)
 {

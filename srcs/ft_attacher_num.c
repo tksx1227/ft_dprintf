@@ -13,7 +13,6 @@
 #include "ft_printf.h"
 
 static t_status	ft_attach_num_width(t_printf *info);
-static t_status	ft_attach_num_width_with_sign(t_printf *info);
 
 t_status	ft_attach_num(t_printf *info)
 {
@@ -30,7 +29,7 @@ t_status	ft_attach_num(t_printf *info)
 			prefix[0] = info->sign;
 			prefix[1] = '\0';
 			if (info->length < info->width - 1)
-				status = ft_attach_num_width_with_sign(info);
+				status = ft_attach_num_width_with_prefix(info, prefix);
 			else
 				status = ft_attach_prefix(info, prefix);
 		}
@@ -59,33 +58,6 @@ static t_status	ft_attach_num_width(t_printf *info)
 		offset = 0;
 	else
 		offset = info->width - info->length;
-	ft_memmove(content + offset, info->content, info->length);
-	free(info->content);
-	info->content = content;
-	info->length = info->width;
-	return (SUCCESS);
-}
-
-static t_status	ft_attach_num_width_with_sign(t_printf *info)
-{
-	size_t	offset;
-	char	*content;
-
-	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
-	if (content == NULL)
-		return (FAIL);
-	if (info->zero_flag && info->prec == -1 && !info->left_align)
-		ft_memset(content, '0', info->width);
-	else
-		ft_memset(content, ' ', info->width);
-	if (info->left_align)
-		offset = 1;
-	else
-		offset = info->width - info->length;
-	if (info->zero_flag && info->prec == -1)
-		content[0] = info->sign;
-	else
-		content[offset - 1] = info->sign;
 	ft_memmove(content + offset, info->content, info->length);
 	free(info->content);
 	info->content = content;

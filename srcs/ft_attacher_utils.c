@@ -48,3 +48,32 @@ t_status	ft_attach_num_prec(t_printf *info)
 	info->length = info->prec;
 	return (SUCCESS);
 }
+
+t_status	ft_attach_num_width_with_prefix(t_printf *info, char *prefix)
+{
+	size_t	offset;
+	size_t	prefix_len;
+	char	*content;
+
+	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
+	if (content == NULL)
+		return (FAIL);
+	if (info->zero_flag && info->prec == -1 && !info->left_align)
+		ft_memset(content, '0', info->width);
+	else
+		ft_memset(content, ' ', info->width);
+	prefix_len = ft_strlen(prefix);
+	if (info->left_align)
+		offset = prefix_len;
+	else
+		offset = info->width - info->length;
+	if (info->zero_flag && info->prec == -1)
+		ft_memmove(content, prefix, prefix_len);
+	else
+		ft_memmove(content + offset - prefix_len, prefix, prefix_len);
+	ft_memmove(content + offset, info->content, info->length);
+	free(info->content);
+	info->content = content;
+	info->length = info->width;
+	return (SUCCESS);
+}

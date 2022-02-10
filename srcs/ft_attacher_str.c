@@ -48,7 +48,10 @@ static t_status	ft_attach_str_width(t_printf *info)
 	content = (char *)ft_calloc((size_t)info->width + 1, sizeof(char));
 	if (content == NULL)
 		return (FAIL);
-	ft_memset(content, ' ', info->width);
+	if (info->zero_flag && !info->left_align)
+		ft_memset(content, '0', info->width);
+	else
+		ft_memset(content, ' ', info->width);
 	if (info->left_align)
 		offset = 0;
 	else

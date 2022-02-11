@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:47:24 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 16:57:06 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 17:09:52 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_status	ft_attach(t_printf *info)
 	t_status	status;
 
 	spec = info->spec;
-	status = FAIL;
 	if (spec == 's' || spec == 'c' || spec == '%')
 		status = ft_attach_str(info);
 	else if (spec == 'd' || spec == 'i' || spec == 'u')
@@ -32,6 +31,8 @@ t_status	ft_attach(t_printf *info)
 		status = ft_attach_ptr(info);
 	else if (spec == 0)
 		status = SUCCESS;
+	else
+		status = ft_attach_str(info);
 	return (status);
 }
 

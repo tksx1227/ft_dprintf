@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 16:05:54 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_status	ft_attach_hex(t_printf *info)
 	t_status	status;
 
 	status = SUCCESS;
-	if (info->length < info->prec)
+	if ((info->is_zero && info->prec == 0) || info->length < info->prec)
 		status = ft_attach_prec_common(info);
 	if (status == SUCCESS)
 	{

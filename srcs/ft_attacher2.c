@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 16:05:54 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 23:42:35 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_status	ft_attach_num(t_printf *info)
 		status = ft_attach_prec_common(info);
 	if (status == SUCCESS)
 	{
-		if (info->sign != 0 && !info->is_unsigned)
+		if (info->sign != 0)
 		{
 			prefix[0] = info->sign;
 			prefix[1] = '\0';
@@ -39,6 +39,18 @@ t_status	ft_attach_num(t_printf *info)
 				status = ft_attach_width_common(info);
 		}
 	}
+	return (status);
+}
+
+t_status	ft_attach_unum(t_printf *info)
+{
+	t_status	status;
+
+	status = SUCCESS;
+	if ((info->is_zero && info->prec == 0) || info->length < info->prec)
+		status = ft_attach_prec_common(info);
+	if (status == SUCCESS && info->length < info->width)
+		status = ft_attach_width_common(info);
 	return (status);
 }
 

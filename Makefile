@@ -21,7 +21,7 @@ ARFLAGS	:= rc
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
-	mv ./libft/libft.a $(NAME)
+	cp ./libft/libft.a $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 all: $(NAME)

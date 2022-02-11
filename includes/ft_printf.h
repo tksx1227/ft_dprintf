@@ -35,7 +35,6 @@ typedef struct s_printf
 	char	*content;
 	char	sign;
 	bool	is_zero;
-	bool	is_unsigned;
 	bool	sharp_flag;
 	bool	left_align;
 	bool	zero_flag;
@@ -59,6 +58,7 @@ t_status	ft_set_uint(va_list *ap, t_printf *info);
 // Attacher
 t_status	ft_attach(t_printf *info);
 t_status	ft_attach_num(t_printf *info);
+t_status	ft_attach_unum(t_printf *info);
 t_status	ft_attach_str(t_printf *info);
 t_status	ft_attach_hex(t_printf *info);
 t_status	ft_attach_ptr(t_printf *info);

@@ -16,6 +16,7 @@ static void	ft_toupper_str(char *s);
 
 t_status	ft_attach_num(t_printf *info)
 {
+	int			prefix_len;
 	char		prefix[2];
 	t_status	status;
 
@@ -24,33 +25,14 @@ t_status	ft_attach_num(t_printf *info)
 		status = ft_attach_prec_common(info);
 	if (status == SUCCESS)
 	{
-		if (info->sign != 0)
-		{
-			prefix[0] = info->sign;
-			prefix[1] = '\0';
-			if (info->length < info->width - 1)
-				status = ft_attach_width_with_prefix_common(info, prefix);
-			else
-				status = ft_attach_prefix_common(info, prefix);
-		}
+		prefix[0] = info->sign;
+		prefix[1] = '\0';
+		prefix_len = (int)ft_strlen(prefix);
+		if (info->length < info->width - prefix_len)
+			status = ft_attach_width_with_prefix_common(info, prefix);
 		else
-		{
-			if (info->length < info->width)
-				status = ft_attach_width_common(info);
-		}
+			status = ft_attach_prefix_common(info, prefix);
 	}
-	return (status);
-}
-
-t_status	ft_attach_unum(t_printf *info)
-{
-	t_status	status;
-
-	status = SUCCESS;
-	if ((info->is_zero && info->prec == 0) || info->length < info->prec)
-		status = ft_attach_prec_common(info);
-	if (status == SUCCESS && info->length < info->width)
-		status = ft_attach_width_common(info);
 	return (status);
 }
 
@@ -90,7 +72,7 @@ t_status	ft_attach_hex(t_printf *info)
 		else
 		{
 			if (info->length < info->width)
-				status = ft_attach_width_common(info);
+				status = ft_attach_width_with_prefix_common(info, "");
 		}
 	}
 	if (status == SUCCESS && info->spec == 'X')

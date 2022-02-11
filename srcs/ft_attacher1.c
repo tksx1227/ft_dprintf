@@ -23,10 +23,8 @@ t_status	ft_attach(t_printf *info)
 	spec = info->spec;
 	if (spec == 's' || spec == 'c' || spec == '%')
 		status = ft_attach_str(info);
-	else if (spec == 'd' || spec == 'i')
+	else if (spec == 'd' || spec == 'i' || spec == 'u')
 		status = ft_attach_num(info);
-	else if (spec == 'u')
-		status = ft_attach_unum(info);
 	else if (spec == 'x' || spec == 'X')
 		status = ft_attach_hex(info);
 	else if (spec == 'p')

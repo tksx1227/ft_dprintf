@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 01:47:24 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 23:42:27 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/12 00:56:17 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_status	ft_attach_str(t_printf *info)
 	status = SUCCESS;
 	if (info->spec == 's' && \
 			info->prec != INIT_PREC && info->prec < info->length)
-			status = ft_attach_str_prec(info);
+		status = ft_attach_str_prec(info);
 	if (status == SUCCESS && info->length < info->width)
 		status = ft_attach_str_width(info);
 	return (status);

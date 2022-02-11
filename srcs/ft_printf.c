@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 23:43:21 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static void	ft_clear_info(t_printf *info, void (*del)(void *))
 	info->spec = 0;
 	info->sign = 0;
 	info->is_zero = false;
-	info->is_unsigned = false;
 	info->sharp_flag = false;
 	info->left_align = false;
 	info->zero_flag = false;

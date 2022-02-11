@@ -35,7 +35,6 @@ typedef struct s_printf
 	char	*content;
 	char	sign;
 	bool	is_zero;
-	bool	is_unsigned;
 	bool	sharp_flag;
 	bool	left_align;
 	bool	zero_flag;
@@ -64,7 +63,6 @@ t_status	ft_attach_hex(t_printf *info);
 t_status	ft_attach_ptr(t_printf *info);
 t_status	ft_attach_prefix_common(t_printf *info, char *prefix);
 t_status	ft_attach_prec_common(t_printf *info);
-t_status	ft_attach_width_common(t_printf *info);
 t_status	ft_attach_width_with_prefix_common(t_printf *info, char *prefix);
 
 // Utils

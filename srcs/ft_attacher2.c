@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:39:51 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 16:05:54 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 23:42:35 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	ft_toupper_str(char *s);
 
 t_status	ft_attach_num(t_printf *info)
 {
+	int			prefix_len;
 	char		prefix[2];
 	t_status	status;
 
@@ -24,20 +25,13 @@ t_status	ft_attach_num(t_printf *info)
 		status = ft_attach_prec_common(info);
 	if (status == SUCCESS)
 	{
-		if (info->sign != 0 && !info->is_unsigned)
-		{
-			prefix[0] = info->sign;
-			prefix[1] = '\0';
-			if (info->length < info->width - 1)
-				status = ft_attach_width_with_prefix_common(info, prefix);
-			else
-				status = ft_attach_prefix_common(info, prefix);
-		}
+		prefix[0] = info->sign;
+		prefix[1] = '\0';
+		prefix_len = (int)ft_strlen(prefix);
+		if (info->length < info->width - prefix_len)
+			status = ft_attach_width_with_prefix_common(info, prefix);
 		else
-		{
-			if (info->length < info->width)
-				status = ft_attach_width_common(info);
-		}
+			status = ft_attach_prefix_common(info, prefix);
 	}
 	return (status);
 }
@@ -78,7 +72,7 @@ t_status	ft_attach_hex(t_printf *info)
 		else
 		{
 			if (info->length < info->width)
-				status = ft_attach_width_common(info);
+				status = ft_attach_width_with_prefix_common(info, "");
 		}
 	}
 	if (status == SUCCESS && info->spec == 'X')

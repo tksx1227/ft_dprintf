@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:38:34 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 23:43:36 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ t_status	ft_set_uint(va_list *ap, t_printf *info)
 	s = ft_itoa_base_4bytes(n, 10, true);
 	if (s == NULL)
 		return (FAIL);
+	info->sign = 0;
 	info->content = s;
-	info->is_unsigned = true;
 	info->length = ft_strlen(s);
 	return (SUCCESS);
 }

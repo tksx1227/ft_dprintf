@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:00:32 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/11 16:49:38 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ t_status	ft_parse(char **fmt, va_list *ap, t_printf *info)
 	if (info->width < 0)
 		return (FAIL);
 	ft_parse_prec(fmt, ap, info);
-	info->spec = **fmt;
-	*fmt += 1;
-	status = ft_set_arg(ap, info);
+	status = SUCCESS;
+	if (**fmt != 0)
+	{
+		info->spec = **fmt;
+		*fmt += 1;
+		status = ft_set_arg(ap, info);
+	}
 	return (status);
 }
 

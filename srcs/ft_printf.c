@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 23:43:21 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/12 23:25:48 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,10 @@ static int	ft_put2per(char **s)
 
 static int	ft_putval(t_printf *info, int wc)
 {
-	size_t	len;
-
-	len = info->length;
-	if ((size_t)INT_MAX - len < (size_t)wc)
+	if (INT_MAX - info->length < wc)
 		return (-1);
-	write(1, info->content, len);
-	return (len);
+	write(1, info->content, info->length);
+	return (info->length);
 }
 
 static int	ft_add_write_count(int current, int new)

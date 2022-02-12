@@ -26,9 +26,8 @@ t_status	ft_set_str(va_list *ap, t_printf *info)
 		return (FAIL);
 	len = ft_strlen(s);
 	if ((size_t)INT_MAX < len)
-		info->length = -1;
-	else
-		info->length = len;
+		return (FAIL);
+	info->length = len;
 	info->content = s;
 	return (SUCCESS);
 }

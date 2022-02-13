@@ -17,7 +17,7 @@ Compile and use as below.
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror <file_name> -I./includes -L./ -lftprintf
+$ gcc -Wall -Wextra -Werror <file_name> -I<include_path> -L<library_path> -lftprintf
 $ ./a.out
 ```
 
@@ -50,7 +50,7 @@ include ft_printf.h and compile your code with libftprintf.a.
 
 int main(void)
 {
-  ft_printf("<%10.5d>, <%010d>\n, 42, 42);
+  ft_printf("<%10.5d>, <%010d>\n", 42, 42);
   ft_printf("<%+d>, <% d>\n", 42, 42);
   ft_printf("<%-10x>, <%#10x>\n", 42, 42);
   return (0);

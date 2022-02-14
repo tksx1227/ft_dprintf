@@ -20,7 +20,7 @@ ft_printf interprets the following format rules.
 - Conversion specifier : `'c', 's', 'p', 'd', 'i', 'u', 'x', 'X', '%'`
     - `%c` : Prints a single character.
     - `%s` : Prints a string.
-    - `%p` : The `void *` pointer argument has to be printed in hexadecimal format.
+    - `%p` : The void * pointer argument has to be printed in hexadecimal format.
     - `%d` : Prints a decimal (base 10) number.
     - `%i` : Prints an integer in base 10.
     - `%u` : Prints an unsigned decimal (base 10) number.

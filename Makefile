@@ -18,11 +18,11 @@ INCDIR	:= includes
 CFLAGS	:= -Wall -Wextra -Werror
 ARFLAGS	:= rc
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 $(LIBFT):

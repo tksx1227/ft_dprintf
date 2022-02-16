@@ -1,5 +1,6 @@
-SRCDIR	:= ./srcs/
-SRCS	:= ft_printf.c \
+SRCDIR	:= srcs
+OBJDIR	:= objs
+FILES	:= ft_printf.c \
 		   ft_parser.c \
 		   ft_setter1.c \
 		   ft_setter2.c \
@@ -8,30 +9,33 @@ SRCS	:= ft_printf.c \
 		   ft_attacher_common.c \
 		   ft_itoa_base_4bytes.c \
 		   ft_itoa_base_8bytes.c
-SRCS	:= $(addprefix $(SRCDIR), $(SRCS))
-OBJS	:= $(SRCS:.c=.o)
+SRCS	:= $(addprefix $(SRCDIR)/, $(FILES))
+OBJS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 CC		:= cc
-INCDIR	:= ./includes
 NAME	:= libftprintf.a
+LIBFT	:= libft/libft.a
+INCDIR	:= includes
 CFLAGS	:= -Wall -Wextra -Werror
 ARFLAGS	:= rc
 
-.c.o:
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $(<:.c=.o)
-
-$(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	cp ./libft/libft.a $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+
+$(LIBFT):
+	$(MAKE) -C $(dir $(LIBFT))
 
 all: $(NAME)
 
 clean:
-	$(MAKE) -C ./libft clean
+	$(MAKE) -C $(dir $(LIBFT)) clean
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) ./libft/libft.a
+	$(RM) $(LIBFT)
 	$(RM) $(NAME)
 
 re: fclean all

@@ -1,3 +1,4 @@
+LIBDIR	:= lib
 SRCDIR	:= srcs
 OBJDIR	:= objs
 FILES	:= ft_printf.c \
@@ -12,8 +13,8 @@ FILES	:= ft_printf.c \
 SRCS	:= $(addprefix $(SRCDIR)/, $(FILES))
 OBJS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 CC		:= cc
-NAME	:= libftprintf.a
-LIBFT	:= libft/libft.a
+NAME	:= $(addprefix $(LIBDIR)/, libftprintf.a)
+LIBFT	:= libft/lib/libft.a
 INCDIR	:= includes
 CFLAGS	:= -Wall -Wextra -Werror
 ARFLAGS	:= rc
@@ -26,12 +27,12 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 $(LIBFT):
-	$(MAKE) -C $(dir $(LIBFT))
+	$(MAKE) -C libft
 
 all: $(NAME)
 
 clean:
-	$(MAKE) -C $(dir $(LIBFT)) clean
+	$(MAKE) -C libft clean
 	$(RM) $(OBJS)
 
 fclean: clean

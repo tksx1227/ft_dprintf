@@ -76,7 +76,7 @@ int main(void)
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror main.c -I./includes -L./ -lftprintf
+$ gcc -Wall -Wextra -Werror main.c -I./includes -L./lib -lftprintf
 $ ./a.out
 ```
 

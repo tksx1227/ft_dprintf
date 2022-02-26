@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:28:29 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/12 23:25:48 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/27 01:17:48 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
-static int	ft_put2per(char **s);
-static int	ft_putval(t_printf *info, int wc);
+static int	ft_put2per(int fd, char **s);
+static int	ft_putval(int fd, t_printf *info, int wc);
 static int	ft_add_write_count(int current, int new);
 static void	ft_clear_info(t_printf *info, void (*del)(void *));
 
-int	ft_printf(const char *fmt, ...)
+int	ft_dprintf(int fd, const char *fmt, ...)
 {
 	int			wc;
 	int			ret;
@@ -33,20 +33,20 @@ int	ft_printf(const char *fmt, ...)
 		{
 			fmt++;
 			if (ft_parse((char **)&fmt, &ap, &info) && ft_attach(&info))
-				wc = ft_putval(&info, ret);
+				wc = ft_putval(fd, &info, ret);
 			else
 				wc = INVALID_NUM;
 			ft_clear_info(&info, free);
 		}
 		else
-			wc = ft_put2per((char **)&fmt);
+			wc = ft_put2per(fd, (char **)&fmt);
 		ret = ft_add_write_count(ret, wc);
 	}
 	va_end(ap);
 	return (ret);
 }
 
-static int	ft_put2per(char **s)
+static int	ft_put2per(int fd, char **s)
 {
 	ssize_t	ret;
 	size_t	len;
@@ -56,17 +56,17 @@ static int	ft_put2per(char **s)
 		len++;
 	if ((size_t)INT_MAX < len)
 		return (-1);
-	ret = write(1, *s, len);
+	ret = write(fd, *s, len);
 	if (ret != -1)
 		*s += ret;
 	return ((int)ret);
 }
 
-static int	ft_putval(t_printf *info, int wc)
+static int	ft_putval(int fd, t_printf *info, int wc)
 {
 	if (INT_MAX - info->length < wc)
 		return (-1);
-	write(1, info->content, info->length);
+	write(fd, info->content, info->length);
 	return (info->length);
 }
 

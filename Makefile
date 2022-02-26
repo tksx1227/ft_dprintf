@@ -1,7 +1,7 @@
 LIBDIR	:= lib
 SRCDIR	:= srcs
 OBJDIR	:= objs
-FILES	:= ft_printf.c \
+FILES	:= ft_dprintf.c \
 		   ft_parser.c \
 		   ft_setter1.c \
 		   ft_setter2.c \
@@ -14,7 +14,7 @@ SRCS	:= $(addprefix $(SRCDIR)/, $(FILES))
 OBJS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 CC		:= cc
 RM		:= rm -rf
-NAME	:= $(addprefix $(LIBDIR)/, libftprintf.a)
+NAME	:= $(addprefix $(LIBDIR)/, libftdprintf.a)
 LIBFT	:= libft/lib/libft.a
 INCDIR	:= includes
 CFLAGS	:= -Wall -Wextra -Werror

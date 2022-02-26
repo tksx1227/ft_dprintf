@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:38:34 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 23:43:36 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/27 01:18:43 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
 t_status	ft_set_str(va_list *ap, t_printf *info)
 {

@@ -13,11 +13,14 @@ FILES	:= ft_printf.c \
 SRCS	:= $(addprefix $(SRCDIR)/, $(FILES))
 OBJS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
 CC		:= cc
+RM		:= rm -rf
 NAME	:= $(addprefix $(LIBDIR)/, libftprintf.a)
 LIBFT	:= libft/lib/libft.a
 INCDIR	:= includes
 CFLAGS	:= -Wall -Wextra -Werror
 ARFLAGS	:= rc
+
+all: $(LIBDIR) $(OBJDIR) $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
@@ -29,18 +32,20 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(LIBFT):
 	$(MAKE) -C libft
 
-all: $(NAME)
+$(LIBDIR):
+	mkdir -p $@
+
+$(OBJDIR):
+	mkdir -p $@
 
 clean:
 	$(MAKE) -C libft clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJDIR)
 
 fclean: clean
-	$(RM) $(LIBFT)
-	$(RM) $(NAME)
+	$(RM) $(dir $(LIBFT))
+	$(RM) $(LIBDIR)
 
 re: fclean all
 
-bonus: all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

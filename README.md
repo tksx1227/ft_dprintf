@@ -1,12 +1,12 @@
-# ft_printf
-It is library that contains ft_printf, a function that will mimic the original printf.
+# ft_dprintf
+It is library that contains ft_dprintf, a function that will mimic the original dprintf.
 
 Place libft in the root directory and use it.
 
 [![tksx1227/libft - GitHub](https://gh-card.dev/repos/tksx1227/libft.svg?fullname=)](https://github.com/tksx1227/libft)
 
 ## Description
-ft_printf interprets the following format rules.
+ft_dprintf interprets the following format rules.
 
 `%[flags][minimum field width].[precision][conversion specifier]`
 
@@ -33,20 +33,20 @@ Compile and use as below.
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror <file_name> -I<include_path> -L<library_path> -lftprintf
+$ gcc -Wall -Wextra -Werror <file_name> -I<include_path> -L<library_path> -lftdprintf
 $ ./a.out
 ```
 
-ft_printf can be used in the same way as printf as shown below.
+ft_dprintf can be used in the same way as dprintf as shown below.
 
 ```c
-/* Use ft_printf */
-ft_printf("/* Output */\n");
-ft_printf("<%c>\n", 'A');
-ft_printf("<%s>\n", "Hello World!!!");
-ft_printf("<%d>\n", 42);
-ft_printf("<%x>\n", 123456789);
-ft_printf("<%%>\n");
+/* Use ft_dprintf */
+ft_dprintf(1, "/* Output */\n");
+ft_dprintf(1, "<%c>\n", 'A');
+ft_dprintf(1, "<%s>\n", "Hello World!!!");
+ft_dprintf(1, "<%d>\n", 42);
+ft_dprintf(1, "<%x>\n", 123456789);
+ft_dprintf(1, "<%%>\n");
 ```
 
 ```planetext
@@ -59,30 +59,38 @@ ft_printf("<%%>\n");
 ```
 
 ## Example
-Include ft_printf.h and compile your code with libftprintf.a.
+Include ft_dprintf.h and compile your code with libftdprintf.a.
 
-```c
+```c:main.c
 /* main.c */
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
 int main(void)
 {
-  ft_printf("<%10.5d>, <%010d>\n", 42, 42);
-  ft_printf("<%+d>, <% d>\n", 42, 42);
-  ft_printf("<%-10x>, <%#10x>\n", 42, 42);
+  int fd;
+  
+  fd = open("ret.txt", O_WRONLY);
+  if (fd == -1)
+  {
+    ft_dprintf(2, "File open error.\n");
+    return (1);
+  }
+  ft_dprintf(fd, "<%10.5d>, <%010d>\n", 42, 42);
+  ft_dprintf(fd, "<%+d>, <% d>\n", 42, 42);
+  ft_dprintf(fd, "<%-10x>, <%#10x>\n", 42, 42);
   return (0);
 }
 ```
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror main.c -I./includes -L./lib -lftprintf
+$ gcc -Wall -Wextra -Werror main.c -I./includes -L./lib -lftdprintf
 $ ./a.out
 ```
 
-The output looks like this.
+The following is output to ret.txt.
 
-```planetext
+```planetext:ret.txt
 <     00042>, <0000000042>
 <+42>, < 42>
 <2a        >, <      0x2a>

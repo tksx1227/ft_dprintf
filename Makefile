@@ -43,7 +43,7 @@ clean:
 	$(RM) $(OBJDIR)
 
 fclean: clean
-	$(RM) $(dir $(LIBFT))
+	$(MAKE) -C libft fclean
 	$(RM) $(LIBDIR)
 
 re: fclean all

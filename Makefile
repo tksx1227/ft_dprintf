@@ -1,23 +1,19 @@
 LIBDIR	:= lib
 SRCDIR	:= srcs
 OBJDIR	:= objs
-FILES	:= ft_dprintf.c \
-		   ft_parser.c \
-		   ft_setter1.c \
-		   ft_setter2.c \
-		   ft_attacher1.c \
-		   ft_attacher2.c \
-		   ft_attacher_common.c \
-		   ft_itoa_base_4bytes.c \
-		   ft_itoa_base_8bytes.c
+FILES	:= ft_dprintf.c ft_parser.c \
+		   ft_setter1.c ft_setter2.c \
+		   ft_attacher1.c ft_attacher2.c ft_attacher_common.c\
+		   ft_itoa_base_4bytes.c ft_itoa_base_8bytes.c
 SRCS	:= $(addprefix $(SRCDIR)/, $(FILES))
 OBJS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.o))
+DEPS	:= $(addprefix $(OBJDIR)/, $(FILES:.c=.d))
 CC		:= cc
 RM		:= rm -rf
-NAME	:= $(addprefix $(LIBDIR)/, libftdprintf.a)
+NAME	:= $(LIBDIR)/libftdprintf.a
 LIBFT	:= libft/lib/libft.a
 INCDIR	:= includes
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -MMD -MP
 ARFLAGS	:= rc
 
 all: $(LIBDIR) $(OBJDIR) $(NAME)
@@ -47,5 +43,7 @@ fclean: clean
 	$(RM) $(LIBDIR)
 
 re: fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re

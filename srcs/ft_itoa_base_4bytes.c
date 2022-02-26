@@ -6,11 +6,11 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:23:10 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/08 12:55:43 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/27 01:18:22 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
 static int	count_digit_base_4bytes(int n, int base, bool is_unsigned);
 static void	set_char_4bytes(char *p, int n, int base, bool is_unsigned);

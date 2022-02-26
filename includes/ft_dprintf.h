@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_dprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/11 02:04:31 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/27 01:19:28 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_DPRINTF_H
+# define FT_DPRINTF_H
 
 # include <stdarg.h>
 # include <stdbool.h>
-# include "../libft/includes/libft.h"
+# include "libft.h"
 
 # define INVALID_NUM -1
 # define INIT_PREC -1
@@ -40,7 +40,7 @@ typedef struct s_printf
 	bool	zero_flag;
 }	t_printf;
 
-int			ft_printf(const char *format, ...);
+int			ft_dprintf(int fd, const char *format, ...);
 
 // Parser
 t_status	ft_parse(char **fmt, va_list *ap, t_printf *info);

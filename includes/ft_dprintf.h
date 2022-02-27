@@ -6,7 +6,7 @@
 /*   By: ttomori <ttomori@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 10:30:03 by ttomori           #+#    #+#             */
-/*   Updated: 2022/02/27 01:43:14 by ttomori          ###   ########.fr       */
+/*   Updated: 2022/02/27 16:06:50 by ttomori          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <stdbool.h>
-# include "../libft/includes/libft.h"
+# include "libft.h"
 
 # define INVALID_NUM -1
 # define INIT_PREC -1

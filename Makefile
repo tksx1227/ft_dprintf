@@ -12,7 +12,7 @@ CC		:= cc
 RM		:= rm -rf
 NAME	:= $(LIBDIR)/libftdprintf.a
 LIBFT	:= libft/lib/libft.a
-INCDIR	:= includes
+INCDIR	:= libft/includes includes
 CFLAGS	:= -Wall -Wextra -Werror -MMD -MP
 ARFLAGS	:= rc
 
@@ -23,7 +23,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+	$(CC) $(CFLAGS) $(addprefix -I, $(INCDIR)) -c $< -o $@
 
 $(LIBFT):
 	$(MAKE) -C libft

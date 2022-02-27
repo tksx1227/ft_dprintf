@@ -1,10 +1,6 @@
 # ft_dprintf
 It is library that contains ft_dprintf, a function that will mimic the original dprintf.
 
-Place libft in the root directory and use it.
-
-[![tksx1227/libft - GitHub](https://gh-card.dev/repos/tksx1227/libft.svg?fullname=)](https://github.com/tksx1227/libft)
-
 ## Description
 ft_dprintf interprets the following format rules.
 

@@ -29,7 +29,7 @@ Compile and use as below.
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror <file_name> -I<include_path> -L<library_path> -lftdprintf
+$ gcc -Wall -Wextra -Werror <file_name> -I<include_paths> -L<library_path> -lftdprintf
 $ ./a.out
 ```
 
@@ -59,6 +59,9 @@ Include ft_dprintf.h and compile your code with libftdprintf.a.
 
 ```c:main.c
 /* main.c */
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "ft_dprintf.h"
 
 int main(void)
@@ -74,13 +77,14 @@ int main(void)
   ft_dprintf(fd, "<%10.5d>, <%010d>\n", 42, 42);
   ft_dprintf(fd, "<%+d>, <% d>\n", 42, 42);
   ft_dprintf(fd, "<%-10x>, <%#10x>\n", 42, 42);
+  close(fd);
   return (0);
 }
 ```
 
 ```bash
 $ make
-$ gcc -Wall -Wextra -Werror main.c -I./includes -L./lib -lftdprintf
+$ gcc -Wall -Wextra -Werror main.c -Ilibft/includes -Iincludes -Llib -lftdprintf
 $ ./a.out
 ```
 
